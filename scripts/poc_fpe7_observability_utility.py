@@ -415,7 +415,45 @@ def information_increment(
                 2026071700 + stage * 20 + comparisons.index((left, right, description)),
             )
             estimate = grouped_pairwise_loss_delta(
-             çN-¢G§²ÚîÆ­yÞge(max_stage + 1):
+                labels,
+                predictions[left],
+                predictions[right],
+                question_ids,
+                valid,
+                2026071800 + stage * 20 + comparisons.index((left, right, description)),
+            )
+            contrasts.append({
+                "stage": f"T{stage}",
+                "contrast": f"{left}_minus_{right}",
+                "description": description,
+                "heldout_information_gain_bits_per_transition": estimate["mean"],
+                "ci95": estimate["ci95"],
+                "probability_gain_at_or_below_zero": estimate.get(
+                    "probability_at_or_below_reference"
+                ),
+                "n_pair_groups": estimate["n_groups"],
+                "n_positive_negative_pairs": estimate["n_positive_negative_pairs"],
+                "population_logloss_gain_bits_per_transition": population_estimate["mean"],
+                "population_logloss_gain_ci95": population_estimate["ci95"],
+            })
+    return summaries, contrasts, all_predictions
+
+
+def quantile_threshold(values: np.ndarray, target_fpr: float) -> float:
+    if len(values) == 0:
+        return 1.0
+    return float(np.quantile(values, 1.0 - target_fpr, method="higher"))
+
+
+def trajectory_max_scores(
+    scores: dict[tuple[int, str], np.ndarray],
+    table: dict[str, np.ndarray],
+    rows: np.ndarray,
+    method: str,
+    max_stage: int,
+) -> np.ndarray:
+    output = np.full(table["risk"].shape[1], -np.inf, dtype=np.float64)
+    for stage in range(max_stage + 1):
         valid = rows & table["risk"][stage] & np.isfinite(scores[(stage, method)])
         output[valid] = np.maximum(output[valid], scores[(stage, method)][valid])
     return output
