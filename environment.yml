@@ -1,0 +1,12 @@
+name: cevr-monitoring
+channels:
+  - pytorch
+  - nvidia
+  - conda-forge
+dependencies:
+  - python=3.11
+  - pip
+  - git
+  - pip:
+      - -r requirements.txt
+

@@ -1,0 +1,867 @@
+{
+  "experiment": "NN12 information-regime support transport",
+  "analysis_status": "post-hoc diagnostic per NN12 frozen protocol",
+  "tokenizer": "Qwen/Qwen2.5-1.5B-Instruct",
+  "n_questions": 240,
+  "n_trajectories": 1920,
+  "question_only_to_evidence": {
+    "trajectory_summary": [
+      {
+        "method": "dense_target",
+        "n": 1061,
+        "events": 395,
+        "auroc": 0.8059717945793895,
+        "auprc": 0.7398959286301634,
+        "brier": 0.2018513722824702,
+        "nll_nats": 0.59649549291065
+      },
+      {
+        "method": "target_support_k8",
+        "n": 1061,
+        "events": 395,
+        "auroc": 0.7858098604934047,
+        "auprc": 0.722827378887973,
+        "brier": 0.19666091367363073,
+        "nll_nats": 0.6020314132786168
+      },
+      {
+        "method": "transported_support_k8",
+        "n": 1061,
+        "events": 395,
+        "auroc": 0.7600866689474284,
+        "auprc": 0.6863430581070443,
+        "brier": 0.2130302664230032,
+        "nll_nats": 0.629048644361665
+      },
+      {
+        "method": "target_support_k32",
+        "n": 1061,
+        "events": 395,
+        "auroc": 0.8108450222374273,
+        "auprc": 0.7547320709596005,
+        "brier": 0.19175788213023046,
+        "nll_nats": 0.5805891268650498
+      },
+      {
+        "method": "transported_support_k32",
+        "n": 1061,
+        "events": 395,
+        "auroc": 0.7808758125213822,
+        "auprc": 0.7167374307179266,
+        "brier": 0.20588306563216785,
+        "nll_nats": 0.6093608763411003
+      },
+      {
+        "method": "target_support_k64",
+        "n": 1061,
+        "events": 395,
+        "auroc": 0.8295054548219104,
+        "auprc": 0.7646890107677564,
+        "brier": 0.18914782223474821,
+        "nll_nats": 0.5668932859998691
+      },
+      {
+        "method": "transported_support_k64",
+        "n": 1061,
+        "events": 395,
+        "auroc": 0.7983008324780476,
+        "auprc": 0.7275100812502826,
+        "brier": 0.20323739505328758,
+        "nll_nats": 0.5991598304731034
+      }
+    ],
+    "paired_bootstrap": [
+      {
+        "candidate": "target_support_k8",
+        "reference": "transported_support_k8",
+        "metric": "auroc",
+        "orientation": "candidate-reference; lower is better only for brier",
+        "mean": 0.025344027644150793,
+        "ci95_low": -0.03824943839053044,
+        "ci95_high": 0.08676131687499178,
+        "probability_positive": 0.784,
+        "n_valid": 2000
+      },
+      {
+        "candidate": "target_support_k8",
+        "reference": "transported_support_k8",
+        "metric": "brier",
+        "orientation": "candidate-reference; lower is better only for brier",
+        "mean": -0.016055755881863316,
+        "ci95_low": -0.03557821116999407,
+        "ci95_high": 0.0032672021250939897,
+        "probability_positive": 0.051,
+        "n_valid": 2000
+      },
+      {
+        "candidate": "target_support_k32",
+        "reference": "transported_support_k32",
+        "metric": "auroc",
+        "orientation": "candidate-reference; lower is better only for brier",
+        "mean": 0.029810141782877855,
+        "ci95_low": -0.015508502553445616,
+        "ci95_high": 0.072186185892477,
+        "probability_positive": 0.906,
+        "n_valid": 2000
+      },
+      {
+        "candidate": "target_support_k32",
+        "reference": "transported_support_k32",
+        "metric": "brier",
+        "orientation": "candidate-reference; lower is better only for brier",
+        "mean": -0.014175197911368693,
+        "ci95_low": -0.031379051585475756,
+        "ci95_high": 0.002151001556985988,
+        "probability_positive": 0.042,
+        "n_valid": 2000
+      },
+      {
+        "candidate": "target_support_k64",
+        "reference": "transported_support_k64",
+        "metric": "auroc",
+        "orientation": "candidate-reference; lower is better only for brier",
+        "mean": 0.03126188930456845,
+        "ci95_low": -0.009160128702071285,
+        "ci95_high": 0.07401347361706441,
+        "probability_positive": 0.9335,
+        "n_valid": 2000
+      },
+      {
+        "candidate": "target_support_k64",
+        "reference": "transported_support_k64",
+        "metric": "brier",
+        "orientation": "candidate-reference; lower is better only for brier",
+        "mean": -0.01424148889074391,
+        "ci95_low": -0.030607934240742176,
+        "ci95_high": 0.0004643802411595135,
+        "probability_positive": 0.0315,
+        "n_valid": 2000
+      }
+    ],
+    "support_transport": [
+      {
+        "k": 8,
+        "mean_jaccard": 0.0,
+        "min_jaccard": 0.0,
+        "max_jaccard": 0.0,
+        "n_fold_stages": 15
+      },
+      {
+        "k": 32,
+        "mean_jaccard": 0.019428146133592988,
+        "min_jaccard": 0.0,
+        "max_jaccard": 0.04918032786885246,
+        "n_fold_stages": 15
+      },
+      {
+        "k": 64,
+        "mean_jaccard": 0.026918583786830035,
+        "min_jaccard": 0.0,
+        "max_jaccard": 0.04918032786885246,
+        "n_fold_stages": 15
+      }
+    ],
+    "support_records": [
+      {
+        "fold": 0,
+        "stage": "T1",
+        "k": 8,
+        "jaccard": 0.0
+      },
+      {
+        "fold": 0,
+        "stage": "T1",
+        "k": 32,
+        "jaccard": 0.03225806451612903
+      },
+      {
+        "fold": 0,
+        "stage": "T1",
+        "k": 64,
+        "jaccard": 0.03225806451612903
+      },
+      {
+        "fold": 0,
+        "stage": "T2",
+        "k": 8,
+        "jaccard": 0.0
+      },
+      {
+        "fold": 0,
+        "stage": "T2",
+        "k": 32,
+        "jaccard": 0.0
+      },
+      {
+        "fold": 0,
+        "stage": "T2",
+        "k": 64,
+        "jaccard": 0.024
+      },
+      {
+        "fold": 0,
+        "stage": "T3",
+        "k": 8,
+        "jaccard": 0.0
+      },
+      {
+        "fold": 0,
+        "stage": "T3",
+        "k": 32,
+        "jaccard": 0.0
+      },
+      {
+        "fold": 0,
+        "stage": "T3",
+        "k": 64,
+        "jaccard": 0.0
+      },
+      {
+        "fold": 1,
+        "stage": "T1",
+        "k": 8,
+        "jaccard": 0.0
+      },
+      {
+        "fold": 1,
+        "stage": "T1",
+        "k": 32,
+        "jaccard": 0.015873015873015872
+      },
+      {
+        "fold": 1,
+        "stage": "T1",
+        "k": 64,
+        "jaccard": 0.024
+      },
+      {
+        "fold": 1,
+        "stage": "T2",
+        "k": 8,
+        "jaccard": 0.0
+      },
+      {
+        "fold": 1,
+        "stage": "T2",
+        "k": 32,
+        "jaccard": 0.0
+      },
+      {
+        "fold": 1,
+        "stage": "T2",
+        "k": 64,
+        "jaccard": 0.024
+      },
+      {
+        "fold": 1,
+        "stage": "T3",
+        "k": 8,
+        "jaccard": 0.0
+      },
+      {
+        "fold": 1,
+        "stage": "T3",
+        "k": 32,
+        "jaccard": 0.0
+      },
+      {
+        "fold": 1,
+        "stage": "T3",
+        "k": 64,
+        "jaccard": 0.0
+      },
+      {
+        "fold": 2,
+        "stage": "T1",
+        "k": 8,
+        "jaccard": 0.0
+      },
+      {
+        "fold": 2,
+        "stage": "T1",
+        "k": 32,
+        "jaccard": 0.015873015873015872
+      },
+      {
+        "fold": 2,
+        "stage": "T1",
+        "k": 64,
+        "jaccard": 0.024
+      },
+      {
+        "fold": 2,
+        "stage": "T2",
+        "k": 8,
+        "jaccard": 0.0
+      },
+      {
+        "fold": 2,
+        "stage": "T2",
+        "k": 32,
+        "jaccard": 0.04918032786885246
+      },
+      {
+        "fold": 2,
+        "stage": "T2",
+        "k": 64,
+        "jaccard": 0.04918032786885246
+      },
+      {
+        "fold": 2,
+        "stage": "T3",
+        "k": 8,
+        "jaccard": 0.0
+      },
+      {
+        "fold": 2,
+        "stage": "T3",
+        "k": 32,
+        "jaccard": 0.015873015873015872
+      },
+      {
+        "fold": 2,
+        "stage": "T3",
+        "k": 64,
+        "jaccard": 0.024
+      },
+      {
+        "fold": 3,
+        "stage": "T1",
+        "k": 8,
+        "jaccard": 0.0
+      },
+      {
+        "fold": 3,
+        "stage": "T1",
+        "k": 32,
+        "jaccard": 0.03225806451612903
+      },
+      {
+        "fold": 3,
+        "stage": "T1",
+        "k": 64,
+        "jaccard": 0.03225806451612903
+      },
+      {
+        "fold": 3,
+        "stage": "T2",
+        "k": 8,
+        "jaccard": 0.0
+      },
+      {
+        "fold": 3,
+        "stage": "T2",
+        "k": 32,
+        "jaccard": 0.04918032786885246
+      },
+      {
+        "fold": 3,
+        "stage": "T2",
+        "k": 64,
+        "jaccard": 0.04065040650406504
+      },
+      {
+        "fold": 3,
+        "stage": "T3",
+        "k": 8,
+        "jaccard": 0.0
+      },
+      {
+        "fold": 3,
+        "stage": "T3",
+        "k": 32,
+        "jaccard": 0.015873015873015872
+      },
+      {
+        "fold": 3,
+        "stage": "T3",
+        "k": 64,
+        "jaccard": 0.04065040650406504
+      },
+      {
+        "fold": 4,
+        "stage": "T1",
+        "k": 8,
+        "jaccard": 0.0
+      },
+      {
+        "fold": 4,
+        "stage": "T1",
+        "k": 32,
+        "jaccard": 0.015873015873015872
+      },
+      {
+        "fold": 4,
+        "stage": "T1",
+        "k": 64,
+        "jaccard": 0.04065040650406504
+      },
+      {
+        "fold": 4,
+        "stage": "T2",
+        "k": 8,
+        "jaccard": 0.0
+      },
+      {
+        "fold": 4,
+        "stage": "T2",
+        "k": 32,
+        "jaccard": 0.04918032786885246
+      },
+      {
+        "fold": 4,
+        "stage": "T2",
+        "k": 64,
+        "jaccard": 0.03225806451612903
+      },
+      {
+        "fold": 4,
+        "stage": "T3",
+        "k": 8,
+        "jaccard": 0.0
+      },
+      {
+        "fold": 4,
+        "stage": "T3",
+        "k": 32,
+        "jaccard": 0.0
+      },
+      {
+        "fold": 4,
+        "stage": "T3",
+        "k": 64,
+        "jaccard": 0.015873015873015872
+      }
+    ]
+  },
+  "evidence_to_question_only": {
+    "trajectory_summary": [
+      {
+        "method": "dense_target",
+        "n": 514,
+        "events": 491,
+        "auroc": 0.4570087664925175,
+        "auprc": 0.9533520085317224,
+        "brier": 0.10574111408595815,
+        "nll_nats": 0.35524680228185906
+      },
+      {
+        "method": "target_support_k8",
+        "n": 514,
+        "events": 491,
+        "auroc": 0.4938014699371292,
+        "auprc": 0.962168762787112,
+        "brier": 0.12373882533686362,
+        "nll_nats": 0.40258606333066127
+      },
+      {
+        "method": "transported_support_k8",
+        "n": 514,
+        "events": 491,
+        "auroc": 0.4206145399805189,
+        "auprc": 0.9401190667781375,
+        "brier": 0.11481588156803173,
+        "nll_nats": 0.3853486867037135
+      },
+      {
+        "method": "target_support_k32",
+        "n": 514,
+        "events": 491,
+        "auroc": 0.4976976888337909,
+        "auprc": 0.959142820159473,
+        "brier": 0.10793192356279273,
+        "nll_nats": 0.3647628955471369
+      },
+      {
+        "method": "transported_support_k32",
+        "n": 514,
+        "events": 491,
+        "auroc": 0.6225980696006376,
+        "auprc": 0.9753408687210108,
+        "brier": 0.10584874585125617,
+        "nll_nats": 0.3429382682236451
+      },
+      {
+        "method": "target_support_k64",
+        "n": 514,
+        "events": 491,
+        "auroc": 0.48636323386168423,
+        "auprc": 0.9589964165052625,
+        "brier": 0.10474688866515684,
+        "nll_nats": 0.3527415895378743
+      },
+      {
+        "method": "transported_support_k64",
+        "n": 514,
+        "events": 491,
+        "auroc": 0.6017887186752856,
+        "auprc": 0.9730121379195658,
+        "brier": 0.10800530514579146,
+        "nll_nats": 0.34981779598209667
+      }
+    ],
+    "paired_bootstrap": [
+      {
+        "candidate": "target_support_k8",
+        "reference": "transported_support_k8",
+        "metric": "auroc",
+        "orientation": "candidate-reference; lower is better only for brier",
+        "mean": 0.0662906332369046,
+        "ci95_low": -0.09720650826016997,
+        "ci95_high": 0.20183142528920692,
+        "probability_positive": 0.8447236180904523,
+        "n_valid": 1990
+      },
+      {
+        "candidate": "target_support_k8",
+        "reference": "transported_support_k8",
+        "metric": "brier",
+        "orientation": "candidate-reference; lower is better only for brier",
+        "mean": 0.008941148680485294,
+        "ci95_low": -0.012448367372380722,
+        "ci95_high": 0.029793240616602372,
+        "probability_positive": 0.7878939469734867,
+        "n_valid": 1999
+      },
+      {
+        "candidate": "target_support_k32",
+        "reference": "transported_support_k32",
+        "metric": "auroc",
+        "orientation": "candidate-reference; lower is better only for brier",
+        "mean": -0.11871172817574455,
+        "ci95_low": -0.25181045607026853,
+        "ci95_high": 0.02613666131496685,
+        "probability_positive": 0.062062062062062065,
+        "n_valid": 1998
+      },
+      {
+        "candidate": "target_support_k32",
+        "reference": "transported_support_k32",
+        "metric": "brier",
+        "orientation": "candidate-reference; lower is better only for brier",
+        "mean": 0.001920859500469593,
+        "ci95_low": -0.014929950161644365,
+        "ci95_high": 0.01786154137557517,
+        "probability_positive": 0.5949874686716792,
+        "n_valid": 1995
+      },
+      {
+        "candidate": "target_support_k64",
+        "reference": "transported_support_k64",
+        "metric": "auroc",
+        "orientation": "candidate-reference; lower is better only for brier",
+        "mean": -0.1191570772701338,
+        "ci95_low": -0.28435173295751126,
+        "ci95_high": 0.0194120071631265,
+        "probability_positive": 0.04663991975927784,
+        "n_valid": 1994
+      },
+      {
+        "candidate": "target_support_k64",
+        "reference": "transported_support_k64",
+        "metric": "brier",
+        "orientation": "candidate-reference; lower is better only for brier",
+        "mean": -0.0029556322035411775,
+        "ci95_low": -0.01795579197988113,
+        "ci95_high": 0.011616079750472685,
+        "probability_positive": 0.34907081868407835,
+        "n_valid": 1991
+      }
+    ],
+    "support_transport": [
+      {
+        "k": 8,
+        "mean_jaccard": 0.0,
+        "min_jaccard": 0.0,
+        "max_jaccard": 0.0,
+        "n_fold_stages": 15
+      },
+      {
+        "k": 32,
+        "mean_jaccard": 0.019428146133592988,
+        "min_jaccard": 0.0,
+        "max_jaccard": 0.04918032786885246,
+        "n_fold_stages": 15
+      },
+      {
+        "k": 64,
+        "mean_jaccard": 0.026918583786830035,
+        "min_jaccard": 0.0,
+        "max_jaccard": 0.04918032786885246,
+        "n_fold_stages": 15
+      }
+    ],
+    "support_records": [
+      {
+        "fold": 0,
+        "stage": "T1",
+        "k": 8,
+        "jaccard": 0.0
+      },
+      {
+        "fold": 0,
+        "stage": "T1",
+        "k": 32,
+        "jaccard": 0.03225806451612903
+      },
+      {
+        "fold": 0,
+        "stage": "T1",
+        "k": 64,
+        "jaccard": 0.03225806451612903
+      },
+      {
+        "fold": 0,
+        "stage": "T2",
+        "k": 8,
+        "jaccard": 0.0
+      },
+      {
+        "fold": 0,
+        "stage": "T2",
+        "k": 32,
+        "jaccard": 0.0
+      },
+      {
+        "fold": 0,
+        "stage": "T2",
+        "k": 64,
+        "jaccard": 0.024
+      },
+      {
+        "fold": 0,
+        "stage": "T3",
+        "k": 8,
+        "jaccard": 0.0
+      },
+      {
+        "fold": 0,
+        "stage": "T3",
+        "k": 32,
+        "jaccard": 0.0
+      },
+      {
+        "fold": 0,
+        "stage": "T3",
+        "k": 64,
+        "jaccard": 0.0
+      },
+      {
+        "fold": 1,
+        "stage": "T1",
+        "k": 8,
+        "jaccard": 0.0
+      },
+      {
+        "fold": 1,
+        "stage": "T1",
+        "k": 32,
+        "jaccard": 0.015873015873015872
+      },
+      {
+        "fold": 1,
+        "stage": "T1",
+        "k": 64,
+        "jaccard": 0.024
+      },
+      {
+        "fold": 1,
+        "stage": "T2",
+        "k": 8,
+        "jaccard": 0.0
+      },
+      {
+        "fold": 1,
+        "stage": "T2",
+        "k": 32,
+        "jaccard": 0.0
+      },
+      {
+        "fold": 1,
+        "stage": "T2",
+        "k": 64,
+        "jaccard": 0.024
+      },
+      {
+        "fold": 1,
+        "stage": "T3",
+        "k": 8,
+        "jaccard": 0.0
+      },
+      {
+        "fold": 1,
+        "stage": "T3",
+        "k": 32,
+        "jaccard": 0.0
+      },
+      {
+        "fold": 1,
+        "stage": "T3",
+        "k": 64,
+        "jaccard": 0.0
+      },
+      {
+        "fold": 2,
+        "stage": "T1",
+        "k": 8,
+        "jaccard": 0.0
+      },
+      {
+        "fold": 2,
+        "stage": "T1",
+        "k": 32,
+        "jaccard": 0.015873015873015872
+      },
+      {
+        "fold": 2,
+        "stage": "T1",
+        "k": 64,
+        "jaccard": 0.024
+      },
+      {
+        "fold": 2,
+        "stage": "T2",
+        "k": 8,
+        "jaccard": 0.0
+      },
+      {
+        "fold": 2,
+        "stage": "T2",
+        "k": 32,
+        "jaccard": 0.04918032786885246
+      },
+      {
+        "fold": 2,
+        "stage": "T2",
+        "k": 64,
+        "jaccard": 0.04918032786885246
+      },
+      {
+        "fold": 2,
+        "stage": "T3",
+        "k": 8,
+        "jaccard": 0.0
+      },
+      {
+        "fold": 2,
+        "stage": "T3",
+        "k": 32,
+        "jaccard": 0.015873015873015872
+      },
+      {
+        "fold": 2,
+        "stage": "T3",
+        "k": 64,
+        "jaccard": 0.024
+      },
+      {
+        "fold": 3,
+        "stage": "T1",
+        "k": 8,
+        "jaccard": 0.0
+      },
+      {
+        "fold": 3,
+        "stage": "T1",
+        "k": 32,
+        "jaccard": 0.03225806451612903
+      },
+      {
+        "fold": 3,
+        "stage": "T1",
+        "k": 64,
+        "jaccard": 0.03225806451612903
+      },
+      {
+        "fold": 3,
+        "stage": "T2",
+        "k": 8,
+        "jaccard": 0.0
+      },
+      {
+        "fold": 3,
+        "stage": "T2",
+        "k": 32,
+        "jaccard": 0.04918032786885246
+      },
+      {
+        "fold": 3,
+        "stage": "T2",
+        "k": 64,
+        "jaccard": 0.04065040650406504
+      },
+      {
+        "fold": 3,
+        "stage": "T3",
+        "k": 8,
+        "jaccard": 0.0
+      },
+      {
+        "fold": 3,
+        "stage": "T3",
+        "k": 32,
+        "jaccard": 0.015873015873015872
+      },
+      {
+        "fold": 3,
+        "stage": "T3",
+        "k": 64,
+        "jaccard": 0.04065040650406504
+      },
+      {
+        "fold": 4,
+        "stage": "T1",
+        "k": 8,
+        "jaccard": 0.0
+      },
+      {
+        "fold": 4,
+        "stage": "T1",
+        "k": 32,
+        "jaccard": 0.015873015873015872
+      },
+      {
+        "fold": 4,
+        "stage": "T1",
+        "k": 64,
+        "jaccard": 0.04065040650406504
+      },
+      {
+        "fold": 4,
+        "stage": "T2",
+        "k": 8,
+        "jaccard": 0.0
+      },
+      {
+        "fold": 4,
+        "stage": "T2",
+        "k": 32,
+        "jaccard": 0.04918032786885246
+      },
+      {
+        "fold": 4,
+        "stage": "T2",
+        "k": 64,
+        "jaccard": 0.03225806451612903
+      },
+      {
+        "fold": 4,
+        "stage": "T3",
+        "k": 8,
+        "jaccard": 0.0
+      },
+      {
+        "fold": 4,
+        "stage": "T3",
+        "k": 32,
+        "jaccard": 0.0
+      },
+      {
+        "fold": 4,
+        "stage": "T3",
+        "k": 64,
+        "jaccard": 0.015873015873015872
+      }
+    ]
+  }
+}

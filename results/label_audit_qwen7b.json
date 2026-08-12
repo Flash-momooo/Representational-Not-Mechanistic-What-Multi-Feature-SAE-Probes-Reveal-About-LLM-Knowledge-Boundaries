@@ -1,0 +1,11 @@
+﻿{
+    "experiment":  "NN31 independent Qwen label audit",
+    "sampling":  "50 exact-correct, 25 nonexact positive-F1, 25 zero-F1",
+    "summary":  {
+                    "n":  100,
+                    "agreement":  0.83,
+                    "exact_false_errors":  17,
+                    "exact_false_correct":  0
+                },
+    "row_level_data":  "excluded from GitHub; available in the research artifact archive"
+}

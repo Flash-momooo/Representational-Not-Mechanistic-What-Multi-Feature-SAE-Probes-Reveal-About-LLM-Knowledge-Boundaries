@@ -1,0 +1,105 @@
+{
+  "experiment": "FPE19 measured monitor cost",
+  "hardware": "NVIDIA GeForce RTX 5080 Laptop GPU",
+  "torch_version": "2.11.0+cu128",
+  "dtype": "bfloat16",
+  "d_model": 2304,
+  "d_sae": 16384,
+  "k": 8,
+  "input_dimension_compression": 288.0,
+  "prompt_tokens": {
+    "median": 36.0,
+    "p05": 29.0,
+    "p95": 58.149999999999864,
+    "benchmarked": 37
+  },
+  "batch_results": [
+    {
+      "batch_size": 1,
+      "dense_linear_readout": {
+        "median_ms": 0.026159999892115593,
+        "p05_ms": 0.021475199796259403,
+        "p95_ms": 0.08458880037069319,
+        "repeats": 100
+      },
+      "sparse_k8_readout_given_latents": {
+        "median_ms": 0.04255999997258186,
+        "p05_ms": 0.035836800932884216,
+        "p95_ms": 0.09108480215072627,
+        "repeats": 100
+      },
+      "sae_encode_plus_sparse_k8": {
+        "median_ms": 0.20563200116157532,
+        "p05_ms": 0.18852640464901924,
+        "p95_ms": 0.3211775869131088,
+        "repeats": 100
+      },
+      "dense_us_per_sample": 26.159999892115593,
+      "sparse_given_latents_us_per_sample": 42.55999997258186,
+      "sae_end_to_end_us_per_sample": 205.63200116157532
+    },
+    {
+      "batch_size": 16,
+      "dense_linear_readout": {
+        "median_ms": 0.019423999823629856,
+        "p05_ms": 0.01685279989615083,
+        "p95_ms": 0.049435199983417985,
+        "repeats": 100
+      },
+      "sparse_k8_readout_given_latents": {
+        "median_ms": 0.03704000078141689,
+        "p05_ms": 0.03215359915047884,
+        "p95_ms": 0.0800639983266592,
+        "repeats": 100
+      },
+      "sae_encode_plus_sparse_k8": {
+        "median_ms": 0.20739199966192245,
+        "p05_ms": 0.16053599417209624,
+        "p95_ms": 0.38865441232919684,
+        "repeats": 100
+      },
+      "dense_us_per_sample": 1.213999988976866,
+      "sparse_given_latents_us_per_sample": 2.315000048838556,
+      "sae_end_to_end_us_per_sample": 12.961999978870153
+    },
+    {
+      "batch_size": 64,
+      "dense_linear_readout": {
+        "median_ms": 0.018672000616788864,
+        "p05_ms": 0.016537599358707668,
+        "p95_ms": 0.061286400072276585,
+        "repeats": 100
+      },
+      "sparse_k8_readout_given_latents": {
+        "median_ms": 0.037935998290777206,
+        "p05_ms": 0.03270239941775799,
+        "p95_ms": 0.0684591971337795,
+        "repeats": 100
+      },
+      "sae_encode_plus_sparse_k8": {
+        "median_ms": 0.3938079923391342,
+        "p05_ms": 0.3428192034363747,
+        "p95_ms": 0.5704080134630203,
+        "repeats": 100
+      },
+      "dense_us_per_sample": 0.291750009637326,
+      "sparse_given_latents_us_per_sample": 0.5927499732933939,
+      "sae_end_to_end_us_per_sample": 6.153249880298972
+    }
+  ],
+  "single_prompt_transformer_forward": {
+    "median_ms": 42.4202880859375,
+    "p05_ms": 36.31872634887695,
+    "p95_ms": 55.07644252777099,
+    "repeats": 50
+  },
+  "single_token_cached_decode": {
+    "median_ms": 33.35590362548828,
+    "p05_ms": 31.057100772857666,
+    "p95_ms": 45.04551677703857,
+    "repeats": 50
+  },
+  "batch_one_sae_over_forward_fraction": 0.004847491859201757,
+  "batch_one_sae_over_cached_decode_fraction": 0.006164785804346956,
+  "interpretation": "K=8 is a readout-dimension reduction. Actual overhead includes the full SAE encoder; report measured latency rather than treating dimensional compression as speedup. The benchmark excludes Python hook overhead and assumes the residual is already GPU-resident."
+}

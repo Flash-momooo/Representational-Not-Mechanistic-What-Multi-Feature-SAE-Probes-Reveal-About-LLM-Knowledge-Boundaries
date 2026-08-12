@@ -1,0 +1,269 @@
+{
+  "experiment": "poc_v40e_context_increment_bootstrap",
+  "comparison": "full V40b C-stage versus answer-only commitment",
+  "unit": "discordant question",
+  "folding": "same 5-fold question-grouped splits, averaged over three seeds",
+  "n_bootstrap": 10000,
+  "results": [
+    {
+      "method": "raw_residual",
+      "layer": 9,
+      "n_discordant_questions": 114,
+      "full_context": {
+        "mean": 0.7007269330734243,
+        "ci95": [
+          0.6409216908010767,
+          0.7589785662071846
+        ],
+        "bootstrap_probability_le_zero": 0.0
+      },
+      "answer_only": {
+        "mean": 0.510853522695628,
+        "ci95": [
+          0.44885721247563354,
+          0.5723759050403786
+        ],
+        "bootstrap_probability_le_zero": 0.0
+      },
+      "no_rationale": {
+        "mean": 0.7025410749094961,
+        "ci95": [
+          0.6410810011138959,
+          0.7613982873851294
+        ],
+        "bootstrap_probability_le_zero": 0.0
+      },
+      "paired_delta": {
+        "mean": 0.18987341037779637,
+        "ci95": [
+          0.12618537083449363,
+          0.2537277220829852
+        ],
+        "bootstrap_probability_le_zero": 0.0
+      },
+      "rationale_increment": {
+        "mean": -0.001814141836071665,
+        "ci95": [
+          -0.03347114893715771,
+          0.02916779796714006
+        ],
+        "bootstrap_probability_le_zero": 0.549
+      }
+    },
+    {
+      "method": "raw_residual",
+      "layer": 18,
+      "n_discordant_questions": 114,
+      "full_context": {
+        "mean": 0.769830827067669,
+        "ci95": [
+          0.718458559593428,
+          0.8196753167641326
+        ],
+        "bootstrap_probability_le_zero": 0.0
+      },
+      "answer_only": {
+        "mean": 0.477109440267335,
+        "ci95": [
+          0.41509224450013915,
+          0.5387242411584516
+        ],
+        "bootstrap_probability_le_zero": 0.0
+      },
+      "no_rationale": {
+        "mean": 0.8319270398217767,
+        "ci95": [
+          0.7839109927596769,
+          0.8771599136730714
+        ],
+        "bootstrap_probability_le_zero": 0.0
+      },
+      "paired_delta": {
+        "mean": 0.29272138680033416,
+        "ci95": [
+          0.21961866471734895,
+          0.3644707254246728
+        ],
+        "bootstrap_probability_le_zero": 0.0
+      },
+      "rationale_increment": {
+        "mean": -0.06209621275410748,
+        "ci95": [
+          -0.10138888888888889,
+          -0.02373189919242552
+        ],
+        "bootstrap_probability_le_zero": 0.9989
+      }
+    },
+    {
+      "method": "sae",
+      "layer": 9,
+      "n_discordant_questions": 114,
+      "full_context": {
+        "mean": 0.6290976283300845,
+        "ci95": [
+          0.5673857821637427,
+          0.6882919973544973
+        ],
+        "bootstrap_probability_le_zero": 0.0
+      },
+      "answer_only": {
+        "mean": 0.5508284600389863,
+        "ci95": [
+          0.4894385268727373,
+          0.6109809245335561
+        ],
+        "bootstrap_probability_le_zero": 0.0
+      },
+      "no_rationale": {
+        "mean": 0.5975633528265109,
+        "ci95": [
+          0.538783416875522,
+          0.6550544764689502
+        ],
+        "bootstrap_probability_le_zero": 0.0
+      },
+      "paired_delta": {
+        "mean": 0.0782691682910981,
+        "ci95": [
+          0.004970673210804795,
+          0.15059623886104148
+        ],
+        "bootstrap_probability_le_zero": 0.0175
+      },
+      "rationale_increment": {
+        "mean": 0.03153427550357374,
+        "ci95": [
+          -0.01678787535969554,
+          0.08206186763204303
+        ],
+        "bootstrap_probability_le_zero": 0.1004
+      }
+    },
+    {
+      "method": "sae",
+      "layer": 18,
+      "n_discordant_questions": 114,
+      "full_context": {
+        "mean": 0.7008650097465887,
+        "ci95": [
+          0.6481605634456512,
+          0.7524108593242367
+        ],
+        "bootstrap_probability_le_zero": 0.0
+      },
+      "answer_only": {
+        "mean": 0.5145502645502646,
+        "ci95": [
+          0.4564254385964912,
+          0.5738728766360345
+        ],
+        "bootstrap_probability_le_zero": 0.0
+      },
+      "no_rationale": {
+        "mean": 0.6432121971595656,
+        "ci95": [
+          0.5845163255360624,
+          0.7007383040935673
+        ],
+        "bootstrap_probability_le_zero": 0.0
+      },
+      "paired_delta": {
+        "mean": 0.1863147451963241,
+        "ci95": [
+          0.11769087069525667,
+          0.25649656548779354
+        ],
+        "bootstrap_probability_le_zero": 0.0
+      },
+      "rationale_increment": {
+        "mean": 0.05765281258702311,
+        "ci95": [
+          -0.005206201267056529,
+          0.11977870022277916
+        ],
+        "bootstrap_probability_le_zero": 0.0385
+      }
+    }
+  ],
+  "representation_comparisons": [
+    {
+      "layer": 9,
+      "condition": "full",
+      "contrast": "raw_residual minus SAE",
+      "paired_delta": {
+        "mean": 0.07162930474333984,
+        "ci95": [
+          -0.00021246693121692892,
+          0.14251424278288313
+        ],
+        "bootstrap_probability_le_zero": 0.0253
+      }
+    },
+    {
+      "layer": 9,
+      "condition": "answer_only",
+      "contrast": "raw_residual minus SAE",
+      "paired_delta": {
+        "mean": -0.0399749373433584,
+        "ci95": [
+          -0.1046724450013924,
+          0.024201127819548852
+        ],
+        "bootstrap_probability_le_zero": 0.886
+      }
+    },
+    {
+      "layer": 9,
+      "condition": "no_rationale",
+      "contrast": "raw_residual minus SAE",
+      "paired_delta": {
+        "mean": 0.10497772208298524,
+        "ci95": [
+          0.03354201475912003,
+          0.1750135756056808
+        ],
+        "bootstrap_probability_le_zero": 0.0017
+      }
+    },
+    {
+      "layer": 18,
+      "condition": "full",
+      "contrast": "raw_residual minus SAE",
+      "paired_delta": {
+        "mean": 0.06896581732108048,
+        "ci95": [
+          0.005040219182214799,
+          0.13298513935301212
+        ],
+        "bootstrap_probability_le_zero": 0.0175
+      }
+    },
+    {
+      "layer": 18,
+      "condition": "answer_only",
+      "contrast": "raw_residual minus SAE",
+      "paired_delta": {
+        "mean": -0.03744082428292953,
+        "ci95": [
+          -0.10769336535783902,
+          0.03202520189362294
+        ],
+        "bootstrap_probability_le_zero": 0.8588
+      }
+    },
+    {
+      "layer": 18,
+      "condition": "no_rationale",
+      "contrast": "raw_residual minus SAE",
+      "paired_delta": {
+        "mean": 0.1887148426622111,
+        "ci95": [
+          0.12552788220551378,
+          0.25359388053467
+        ],
+        "bootstrap_probability_le_zero": 0.0
+      }
+    }
+  ]
+}

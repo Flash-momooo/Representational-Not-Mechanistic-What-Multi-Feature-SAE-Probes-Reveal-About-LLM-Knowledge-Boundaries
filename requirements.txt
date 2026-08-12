@@ -1,0 +1,16 @@
+accelerate==1.13.0
+bitsandbytes==0.49.2; platform_system != "Darwin"
+datasets==4.8.5
+einops==0.8.2
+huggingface-hub==1.14.0
+numpy==2.4.3
+pandas==3.0.2
+pyyaml==6.0.3
+sae-lens==6.43.0
+scikit-learn==1.8.0
+scipy==1.17.1
+torch==2.11.0
+tqdm==4.67.3
+transformer-lens==3.2.1
+transformers==5.8.0
+

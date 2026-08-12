@@ -1,0 +1,170 @@
+﻿{
+    "experiment":  "V43 T0 target separation retrospective audit",
+    "status":  "cache-only retrospective reanalysis; not a prospective confirmation",
+    "cache":  "artifacts/cache/fpe14_qwen15_trivia_confirmatory_trajectory_states.npz",
+    "model_condition":  "fpe14_qwen15_trivia_confirmatory_trajectory_states",
+    "n_questions":  400,
+    "samples_per_question":  8,
+    "max_within_question_T0_raw_feature_variance":  0.0,
+    "question_target":  "Beta(1,1)-smoothed empirical error rate across eight stochastic completions",
+    "trajectory_target":  "individual completion error within the same question",
+    "analysis_protocol":  "Retrospective reuse of FPE4 settings: 5 question-grouped folds, seeds 13/29/42, ridge 0.10; no target-side parameter selection",
+    "summary":  [
+                    {
+                        "method":  "fused_T0",
+                        "binomial_nll_per_completion_mean":  0.4823814294504518,
+                        "mse_observed_rate_mean":  0.12326179633260875,
+                        "pearson_mean":  0.4901280244866011,
+                        "spearman_mean":  0.4432472160413041,
+                        "strict_within_question_trajectory_auroc":  0.5
+                    },
+                    {
+                        "method":  "confidence_T0",
+                        "binomial_nll_per_completion_mean":  0.5012549791774384,
+                        "mse_observed_rate_mean":  0.13132828156800838,
+                        "pearson_mean":  0.40922636112302135,
+                        "spearman_mean":  0.3755463703753163,
+                        "strict_within_question_trajectory_auroc":  0.5
+                    },
+                    {
+                        "method":  "raw_T0",
+                        "binomial_nll_per_completion_mean":  0.5269766027190348,
+                        "mse_observed_rate_mean":  0.14017486737545393,
+                        "pearson_mean":  0.41305584410245255,
+                        "spearman_mean":  0.4107608671381114,
+                        "strict_within_question_trajectory_auroc":  0.5
+                    },
+                    {
+                        "method":  "global",
+                        "binomial_nll_per_completion_mean":  0.5738777304113749,
+                        "mse_observed_rate_mean":  0.15834450466275338,
+                        "pearson_mean":  -0.11397954040939862,
+                        "spearman_mean":  -0.11045467848068935,
+                        "strict_within_question_trajectory_auroc":  0.5
+                    }
+                ],
+    "comparisons":  [
+                        {
+                            "contrast":  "fused_T0 minus global binomial NLL",
+                            "bootstrap":  {
+                                              "mean":  -0.0914963009609231,
+                                              "ci95":  [
+                                                           -0.10988655950786354,
+                                                           -0.07295305263120362
+                                                       ]
+                                          }
+                        },
+                        {
+                            "contrast":  "fused_T0 minus confidence_T0 binomial NLL",
+                            "bootstrap":  {
+                                              "mean":  -0.01887354972698653,
+                                              "ci95":  [
+                                                           -0.02545820621984774,
+                                                           -0.012248823206973701
+                                                       ]
+                                          }
+                        }
+                    ],
+    "rows":  [
+                 {
+                     "method":  "global",
+                     "seed":  13,
+                     "binomial_nll_per_completion":  0.5748351555773785,
+                     "mse_observed_rate":  0.15875242295146136,
+                     "pearson":  -0.13935230970910126,
+                     "spearman":  -0.1392426855943534
+                 },
+                 {
+                     "method":  "confidence_T0",
+                     "seed":  13,
+                     "binomial_nll_per_completion":  0.5016067485276074,
+                     "mse_observed_rate":  0.13125899939818875,
+                     "pearson":  0.40986999180462297,
+                     "spearman":  0.3751241022605003
+                 },
+                 {
+                     "method":  "raw_T0",
+                     "seed":  13,
+                     "binomial_nll_per_completion":  0.5258685223561704,
+                     "mse_observed_rate":  0.13961616232110446,
+                     "pearson":  0.4261914880094693,
+                     "spearman":  0.4095887750738602
+                 },
+                 {
+                     "method":  "fused_T0",
+                     "seed":  13,
+                     "binomial_nll_per_completion":  0.4805115021835451,
+                     "mse_observed_rate":  0.12220153002419902,
+                     "pearson":  0.501647713414588,
+                     "spearman":  0.45021537585092014
+                 },
+                 {
+                     "method":  "global",
+                     "seed":  29,
+                     "binomial_nll_per_completion":  0.5729619796696632,
+                     "mse_observed_rate":  0.1579519139415028,
+                     "pearson":  -0.087639462833513,
+                     "spearman":  -0.08503724423916309
+                 },
+                 {
+                     "method":  "confidence_T0",
+                     "seed":  29,
+                     "binomial_nll_per_completion":  0.5011926530121543,
+                     "mse_observed_rate":  0.1314096877627378,
+                     "pearson":  0.4083133810791538,
+                     "spearman":  0.372934129152318
+                 },
+                 {
+                     "method":  "raw_T0",
+                     "seed":  29,
+                     "binomial_nll_per_completion":  0.5281954612517883,
+                     "mse_observed_rate":  0.14061396810015814,
+                     "pearson":  0.40440332903091236,
+                     "spearman":  0.40384819533103483
+                 },
+                 {
+                     "method":  "fused_T0",
+                     "seed":  29,
+                     "binomial_nll_per_completion":  0.48479354171866407,
+                     "mse_observed_rate":  0.12439691722427076,
+                     "pearson":  0.4771607107362478,
+                     "spearman":  0.43241708389579264
+                 },
+                 {
+                     "method":  "global",
+                     "seed":  42,
+                     "binomial_nll_per_completion":  0.573836055987083,
+                     "mse_observed_rate":  0.15832917709529595,
+                     "pearson":  -0.1149468486855816,
+                     "spearman":  -0.10708410560855154
+                 },
+                 {
+                     "method":  "confidence_T0",
+                     "seed":  42,
+                     "binomial_nll_per_completion":  0.5009655359925533,
+                     "mse_observed_rate":  0.1313161575430987,
+                     "pearson":  0.40949571048528716,
+                     "spearman":  0.3785808797131304
+                 },
+                 {
+                     "method":  "raw_T0",
+                     "seed":  42,
+                     "binomial_nll_per_completion":  0.5268658245491455,
+                     "mse_observed_rate":  0.14029447170509915,
+                     "pearson":  0.408572715266976,
+                     "spearman":  0.4188456310094392
+                 },
+                 {
+                     "method":  "fused_T0",
+                     "seed":  42,
+                     "binomial_nll_per_completion":  0.4818392444491464,
+                     "mse_observed_rate":  0.12318694174935647,
+                     "pearson":  0.4915756493089674,
+                     "spearman":  0.4471091883771996
+                 }
+             ],
+    "interpretation":  {
+                           "question_level":  "A shared T0 state may rank questions by expected completion error.",
+                           "trajectory_level":  "A deterministic T0-only score is identical for all completions of one question and therefore has strict within-question AUROC 0.5."
+                       }
+}

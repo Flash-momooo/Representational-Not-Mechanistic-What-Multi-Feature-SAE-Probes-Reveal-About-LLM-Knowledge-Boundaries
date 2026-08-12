@@ -1,0 +1,59 @@
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Environments and secrets
+.venv/
+venv/
+.env
+.env.*
+*.key
+*.pem
+*token*
+
+# Models and large research artifacts
+models/
+checkpoints/
+artifacts/
+data/cache/
+outputs/cache/
+*.npz
+*.npy
+*.pt
+*.pth
+*.safetensors
+*.bin
+
+# Runtime output
+reproduced/
+outputs/
+*.log
+*.pid
+wandb/
+
+# Publication and presentation tooling is out of scope
+paper/
+figures/
+figure_versions/
+qa_*/
+tools/
+*.docx
+*.tex
+*.aux
+*.bbl
+*.blg
+*.pdf
+*.png
+*.jpg
+*.jpeg
+*.svg
+*.tiff
+
+# Editors and OS
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db

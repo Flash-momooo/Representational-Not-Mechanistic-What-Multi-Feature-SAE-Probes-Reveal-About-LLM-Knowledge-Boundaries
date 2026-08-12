@@ -1,0 +1,74 @@
+{
+  "experiment": "NN32 isolated true SAE training on Qwen2.5-7B-Instruct",
+  "protocol": "paper/NN32_FROZEN_QWEN7B_TRUE_SAE_PROTOCOL.md",
+  "collection": {
+    "source": "data\\fpe12_trivia_holdout_questions.jsonl",
+    "model": "models/Qwen2.5-7B-Instruct",
+    "load_in_4bit": true,
+    "layer": 18,
+    "n_prompts": 240,
+    "n_train_prompts": 192,
+    "n_validation_prompts": 48,
+    "n_train_tokens": 12488,
+    "n_validation_tokens": 3115,
+    "hidden_size": 3584,
+    "prompt_length_min": 53,
+    "prompt_length_median": 63.0,
+    "prompt_length_max": 111,
+    "labels_or_answers_read": false
+  },
+  "architecture": {
+    "type": "TopKSAE",
+    "expansion": 2,
+    "top_k": 32,
+    "epochs": 3,
+    "batch_size": 128,
+    "learning_rate": 0.0003,
+    "seed": 20260730
+  },
+  "audit": {
+    "train": {
+      "mse": 3.44777500630516,
+      "explained_variance": 0.9957315030223317,
+      "mean_cosine": 0.8408443003721072,
+      "mean_l0": 32.0
+    },
+    "validation": {
+      "mse": 3.4459011561606516,
+      "explained_variance": 0.995732600103262,
+      "mean_cosine": 0.8411700155340841,
+      "mean_l0": 32.0
+    },
+    "history": [
+      {
+        "epoch": 1,
+        "train_mse": 656.2905524410857,
+        "mse": 388.36013471624824,
+        "explained_variance": 0.5190552706880978,
+        "mean_cosine": 0.6538701561059844,
+        "mean_l0": 32.0
+      },
+      {
+        "epoch": 2,
+        "train_mse": 167.4899570659366,
+        "mse": 35.597362151798706,
+        "explained_variance": 0.9559162690145233,
+        "mean_cosine": 0.8039922196830639,
+        "mean_l0": 32.0
+      },
+      {
+        "epoch": 3,
+        "train_mse": 9.936903611083277,
+        "mse": 3.4459011561606516,
+        "explained_variance": 0.995732600103262,
+        "mean_cosine": 0.8411700155340841,
+        "mean_l0": 32.0
+      }
+    ],
+    "d_model": 3584,
+    "d_sae": 7168
+  },
+  "weights": "outputs\\nn32_qwen7b_l18_topk_sae.pt",
+  "passed_minimum_reconstruction_audit": true,
+  "interpretation": "A small independently trained SAE, not an official QwenScope-quality dictionary. Positive readout results remain conditional on this dictionary audit."
+}

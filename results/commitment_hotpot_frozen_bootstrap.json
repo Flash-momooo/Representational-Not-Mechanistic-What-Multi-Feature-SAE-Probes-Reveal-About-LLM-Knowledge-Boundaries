@@ -1,0 +1,172 @@
+{
+  "experiment": "poc_v41_hotpot_confirmatory_bootstrap",
+  "protocol": "frozen L9/L18, question-grouped 5-fold CV, three seeds",
+  "n_rows": 1280,
+  "n_questions": 160,
+  "n_bootstrap": 10000,
+  "results": [
+    {
+      "method": "raw_residual",
+      "layer": 9,
+      "n_discordant_questions": 134,
+      "full_context": {
+        "mean": 0.8178867566927268,
+        "ci95": [
+          0.7643145877754086,
+          0.8689599620942904
+        ],
+        "reference": 0.5,
+        "bootstrap_probability_at_or_below_reference": 0.0
+      },
+      "answer_only": {
+        "mean": 0.5057036247334754,
+        "ci95": [
+          0.44149934849561717,
+          0.5714113954039326
+        ],
+        "reference": 0.5,
+        "bootstrap_probability_at_or_below_reference": 0.433
+      },
+      "context_increment": {
+        "mean": 0.3121831319592514,
+        "ci95": [
+          0.23563699360341156,
+          0.38613480217957824
+        ],
+        "reference": 0.0,
+        "bootstrap_probability_at_or_below_reference": 0.0
+      }
+    },
+    {
+      "method": "raw_residual",
+      "layer": 18,
+      "n_discordant_questions": 134,
+      "full_context": {
+        "mean": 0.937514806917792,
+        "ci95": [
+          0.9054601990049752,
+          0.9656130063965885
+        ],
+        "reference": 0.5,
+        "bootstrap_probability_at_or_below_reference": 0.0
+      },
+      "answer_only": {
+        "mean": 0.49809879175550814,
+        "ci95": [
+          0.4331153755034352,
+          0.5601414060649135
+        ],
+        "reference": 0.5,
+        "bootstrap_probability_at_or_below_reference": 0.5241
+      },
+      "context_increment": {
+        "mean": 0.43941601516228385,
+        "ci95": [
+          0.3726957474532101,
+          0.5037263089315329
+        ],
+        "reference": 0.0,
+        "bootstrap_probability_at_or_below_reference": 0.0
+      }
+    },
+    {
+      "method": "sae",
+      "layer": 9,
+      "n_discordant_questions": 134,
+      "full_context": {
+        "mean": 0.7053837953091685,
+        "ci95": [
+          0.6492404051172708,
+          0.7598082504145938
+        ],
+        "reference": 0.5,
+        "bootstrap_probability_at_or_below_reference": 0.0
+      },
+      "answer_only": {
+        "mean": 0.5232113243307273,
+        "ci95": [
+          0.47428527007818044,
+          0.5738694918265814
+        ],
+        "reference": 0.5,
+        "bootstrap_probability_at_or_below_reference": 0.181
+      },
+      "context_increment": {
+        "mean": 0.18217247097844114,
+        "ci95": [
+          0.10823531153755034,
+          0.2557997216299455
+        ],
+        "reference": 0.0,
+        "bootstrap_probability_at_or_below_reference": 0.0
+      }
+    },
+    {
+      "method": "sae",
+      "layer": 18,
+      "n_discordant_questions": 134,
+      "full_context": {
+        "mean": 0.8608386638237384,
+        "ci95": [
+          0.8177914001421464,
+          0.9009076640606491
+        ],
+        "reference": 0.5,
+        "bootstrap_probability_at_or_below_reference": 0.0
+      },
+      "answer_only": {
+        "mean": 0.5087271973466004,
+        "ci95": [
+          0.4517018330964227,
+          0.5658925610045011
+        ],
+        "reference": 0.5,
+        "bootstrap_probability_at_or_below_reference": 0.3862
+      },
+      "context_increment": {
+        "mean": 0.3521114664771381,
+        "ci95": [
+          0.2825616708126037,
+          0.4209315772328831
+        ],
+        "reference": 0.0,
+        "bootstrap_probability_at_or_below_reference": 0.0
+      }
+    }
+  ],
+  "representation_comparisons": [
+    {
+      "layer": 9,
+      "contrast": "full-context raw residual minus SAE",
+      "paired_delta": {
+        "mean": 0.11250296138355842,
+        "ci95": [
+          0.05521070244018007,
+          0.17038616441601515
+        ],
+        "reference": 0.0,
+        "bootstrap_probability_at_or_below_reference": 0.0001
+      }
+    },
+    {
+      "layer": 18,
+      "contrast": "full-context raw residual minus SAE",
+      "paired_delta": {
+        "mean": 0.07667614309405354,
+        "ci95": [
+          0.030567253020611234,
+          0.1238392857142857
+        ],
+        "reference": 0.0,
+        "bootstrap_probability_at_or_below_reference": 0.0006
+      }
+    }
+  ],
+  "confirmatory_decision": {
+    "raw_l18_strong_replication": true,
+    "sae_l18_strong_replication": true,
+    "context_dependence_replication": true,
+    "overall_post_commitment_decision": "strong_replication",
+    "pre_commitment_decision": "not_tested_in_v41_after_pre-extraction_amendment"
+  }
+}

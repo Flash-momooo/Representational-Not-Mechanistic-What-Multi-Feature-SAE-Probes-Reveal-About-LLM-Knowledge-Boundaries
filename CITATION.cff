@@ -1,0 +1,27 @@
+cff-version: 1.2.0
+message: "If you use this code or its experimental artifacts, please cite the accompanying manuscript."
+title: "Boundary-Aware Internal Hallucination Monitoring and CEVR"
+type: software
+version: 1.0.0
+date-released: 2026-08-12
+authors:
+  - family-names: Liu
+    given-names: Mengwang
+    affiliation: Shandong University of Finance and Economics
+repository-code: "https://github.com/Flash-momooo/Representational-Not-Mechanistic-What-Multi-Feature-SAE-Probes-Reveal-About-LLM-Knowledge-Boundaries"
+license: MIT
+keywords:
+  - hallucination monitoring
+  - sparse autoencoder
+  - hidden states
+  - observability
+  - candidate verification
+preferred-citation:
+  type: article
+  title: "What Can an Internal Hallucination Monitor Know? Three Boundaries and a Commitment-Evidence Verification Router"
+  authors:
+    - family-names: Liu
+      given-names: Mengwang
+  year: 2026
+  notes: "Manuscript under review; DOI not yet assigned."
+

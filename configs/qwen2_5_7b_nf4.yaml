@@ -1,0 +1,11 @@
+model:
+  name: Qwen/Qwen2.5-7B-Instruct
+  dtype: bfloat16
+  device: cuda
+  quantization: nf4
+  local_files_only: false
+
+analysis:
+  layer: 18
+  note: "This configuration is an NF4 cross-model boundary test, not a full-precision public-SAE replication."
+

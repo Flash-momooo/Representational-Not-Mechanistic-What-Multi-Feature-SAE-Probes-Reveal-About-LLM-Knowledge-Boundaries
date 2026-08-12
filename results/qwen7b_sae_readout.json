@@ -1,0 +1,362 @@
+{
+  "experiment": "NN32 frozen true-SAE Qwen2.5-7B readout replication",
+  "protocol": "paper/NN32_FROZEN_QWEN7B_TRUE_SAE_PROTOCOL.md",
+  "analysis_status": "WebQuestions labels and folds are used only after independently trained SAE weights are fixed.",
+  "model": "Qwen2.5-7B-Instruct NF4 double-quant, bfloat16 compute",
+  "sae_weights": "outputs\\nn32_qwen7b_l18_topk_sae.pt",
+  "data": "data\\nn19_qwen7b_webquestions_trajectory.jsonl",
+  "n_questions": 600,
+  "n_trajectories": 4800,
+  "accuracy": 0.17520833333333333,
+  "selections": [
+    {
+      "fold": 0,
+      "selection_fold": 1,
+      "raw_k": 32,
+      "raw_candidates": [
+        {
+          "k": 8,
+          "mean_group_nll": 0.39572238413352956
+        },
+        {
+          "k": 32,
+          "mean_group_nll": 0.34497699936186055
+        }
+      ],
+      "sae_k": 32,
+      "sae_candidates": [
+        {
+          "k": 8,
+          "mean_group_nll": 0.44615999682057145
+        },
+        {
+          "k": 32,
+          "mean_group_nll": 0.44059125574534175
+        }
+      ]
+    },
+    {
+      "fold": 1,
+      "selection_fold": 2,
+      "raw_k": 32,
+      "raw_candidates": [
+        {
+          "k": 8,
+          "mean_group_nll": 0.42582202717803125
+        },
+        {
+          "k": 32,
+          "mean_group_nll": 0.4257123661855518
+        }
+      ],
+      "sae_k": 8,
+      "sae_candidates": [
+        {
+          "k": 8,
+          "mean_group_nll": 0.44176663310682374
+        },
+        {
+          "k": 32,
+          "mean_group_nll": 0.4472251738087975
+        }
+      ]
+    },
+    {
+      "fold": 2,
+      "selection_fold": 3,
+      "raw_k": 32,
+      "raw_candidates": [
+        {
+          "k": 8,
+          "mean_group_nll": 0.36542296893959114
+        },
+        {
+          "k": 32,
+          "mean_group_nll": 0.3450079842682021
+        }
+      ],
+      "sae_k": 32,
+      "sae_candidates": [
+        {
+          "k": 8,
+          "mean_group_nll": 0.42814268392939625
+        },
+        {
+          "k": 32,
+          "mean_group_nll": 0.4180287802943516
+        }
+      ]
+    },
+    {
+      "fold": 3,
+      "selection_fold": 4,
+      "raw_k": 8,
+      "raw_candidates": [
+        {
+          "k": 8,
+          "mean_group_nll": 0.44886991690796635
+        },
+        {
+          "k": 32,
+          "mean_group_nll": 0.49772884145359547
+        }
+      ],
+      "sae_k": 32,
+      "sae_candidates": [
+        {
+          "k": 8,
+          "mean_group_nll": 0.5102078203541001
+        },
+        {
+          "k": 32,
+          "mean_group_nll": 0.5069964263501537
+        }
+      ]
+    },
+    {
+      "fold": 4,
+      "selection_fold": 0,
+      "raw_k": 32,
+      "raw_candidates": [
+        {
+          "k": 8,
+          "mean_group_nll": 0.5455460897008358
+        },
+        {
+          "k": 32,
+          "mean_group_nll": 0.4762769692992086
+        }
+      ],
+      "sae_k": 32,
+      "sae_candidates": [
+        {
+          "k": 8,
+          "mean_group_nll": 0.5702014455155084
+        },
+        {
+          "k": 32,
+          "mean_group_nll": 0.559049714466993
+        }
+      ]
+    }
+  ],
+  "trajectory_summary": [
+    {
+      "method": "confidence",
+      "n": 2078,
+      "events": 1237,
+      "auroc": 0.6358018757744034,
+      "auprc": 0.7559676452588309,
+      "brier": 0.29417918047125297,
+      "nll_nats": 0.8072390753171748
+    },
+    {
+      "method": "dense_raw",
+      "n": 2078,
+      "events": 1237,
+      "auroc": 0.7405814766076109,
+      "auprc": 0.8126702217413084,
+      "brier": 0.2634189972587504,
+      "nll_nats": 0.7345349106484452
+    },
+    {
+      "method": "raw_topk",
+      "n": 2078,
+      "events": 1237,
+      "auroc": 0.7689891638798557,
+      "auprc": 0.8364973770410533,
+      "brier": 0.23140469486735663,
+      "nll_nats": 0.6912322382367722
+    },
+    {
+      "method": "sae_topk",
+      "n": 2078,
+      "events": 1237,
+      "auroc": 0.6245702031207796,
+      "auprc": 0.7449302666507296,
+      "brier": 0.28347947033633025,
+      "nll_nats": 0.7880461302714229
+    }
+  ],
+  "pre_event_utility_10pct_nominal": {
+    "confidence": {
+      "n_correct": 841,
+      "n_eligible_error": 1124,
+      "false_alert": 79,
+      "detected": 364,
+      "actual_fpr": 0.093935790725327,
+      "pre_event_recall": 0.3238434163701068,
+      "mean_token_lead": 1.1868131868131868
+    },
+    "dense_raw": {
+      "n_correct": 841,
+      "n_eligible_error": 1124,
+      "false_alert": 90,
+      "detected": 477,
+      "actual_fpr": 0.1070154577883472,
+      "pre_event_recall": 0.42437722419928825,
+      "mean_token_lead": 1.1823899371069182
+    },
+    "raw_topk": {
+      "n_correct": 841,
+      "n_eligible_error": 1124,
+      "false_alert": 71,
+      "detected": 535,
+      "actual_fpr": 0.08442330558858502,
+      "pre_event_recall": 0.47597864768683273,
+      "mean_token_lead": 1.1401869158878504
+    },
+    "sae_topk": {
+      "n_correct": 841,
+      "n_eligible_error": 1124,
+      "false_alert": 100,
+      "detected": 395,
+      "actual_fpr": 0.11890606420927467,
+      "pre_event_recall": 0.351423487544484,
+      "mean_token_lead": 1.081012658227848
+    }
+  },
+  "thresholds": {
+    "confidence": [
+      {
+        "test_fold": 0,
+        "calibration_fold": 2,
+        "threshold": 0.3359683426104652,
+        "n_calibration_correct": 151
+      },
+      {
+        "test_fold": 1,
+        "calibration_fold": 3,
+        "threshold": 0.3029709338834448,
+        "n_calibration_correct": 177
+      },
+      {
+        "test_fold": 2,
+        "calibration_fold": 4,
+        "threshold": 0.49092653751528625,
+        "n_calibration_correct": 169
+      },
+      {
+        "test_fold": 3,
+        "calibration_fold": 0,
+        "threshold": 0.466053992688663,
+        "n_calibration_correct": 130
+      },
+      {
+        "test_fold": 4,
+        "calibration_fold": 1,
+        "threshold": 0.5872406273969251,
+        "n_calibration_correct": 214
+      }
+    ],
+    "dense_raw": [
+      {
+        "test_fold": 0,
+        "calibration_fold": 2,
+        "threshold": 0.36548561806067187,
+        "n_calibration_correct": 151
+      },
+      {
+        "test_fold": 1,
+        "calibration_fold": 3,
+        "threshold": 0.2451972295086984,
+        "n_calibration_correct": 177
+      },
+      {
+        "test_fold": 2,
+        "calibration_fold": 4,
+        "threshold": 0.5963296676863082,
+        "n_calibration_correct": 169
+      },
+      {
+        "test_fold": 3,
+        "calibration_fold": 0,
+        "threshold": 0.4336678497762063,
+        "n_calibration_correct": 130
+      },
+      {
+        "test_fold": 4,
+        "calibration_fold": 1,
+        "threshold": 0.6456425785620277,
+        "n_calibration_correct": 214
+      }
+    ],
+    "raw_topk": [
+      {
+        "test_fold": 0,
+        "calibration_fold": 2,
+        "threshold": 0.5594232084040602,
+        "n_calibration_correct": 151
+      },
+      {
+        "test_fold": 1,
+        "calibration_fold": 3,
+        "threshold": 0.41634549555953376,
+        "n_calibration_correct": 177
+      },
+      {
+        "test_fold": 2,
+        "calibration_fold": 4,
+        "threshold": 0.631775650087351,
+        "n_calibration_correct": 169
+      },
+      {
+        "test_fold": 3,
+        "calibration_fold": 0,
+        "threshold": 0.4730592046935132,
+        "n_calibration_correct": 130
+      },
+      {
+        "test_fold": 4,
+        "calibration_fold": 1,
+        "threshold": 0.5938413129501822,
+        "n_calibration_correct": 214
+      }
+    ],
+    "sae_topk": [
+      {
+        "test_fold": 0,
+        "calibration_fold": 2,
+        "threshold": 0.5510850831641902,
+        "n_calibration_correct": 151
+      },
+      {
+        "test_fold": 1,
+        "calibration_fold": 3,
+        "threshold": 0.45908178589341775,
+        "n_calibration_correct": 177
+      },
+      {
+        "test_fold": 2,
+        "calibration_fold": 4,
+        "threshold": 0.5249769946073134,
+        "n_calibration_correct": 169
+      },
+      {
+        "test_fold": 3,
+        "calibration_fold": 0,
+        "threshold": 0.3429715578411565,
+        "n_calibration_correct": 130
+      },
+      {
+        "test_fold": 4,
+        "calibration_fold": 1,
+        "threshold": 0.7009837908939601,
+        "n_calibration_correct": 214
+      }
+    ]
+  },
+  "support_jaccard_across_outer_folds": {
+    "raw_topk": {
+      "T1": 0.20328472274690762,
+      "T2": 0.20668729203135414,
+      "T3": 0.2521462022465669
+    },
+    "sae_topk": {
+      "T1": 0.65222816399287,
+      "T2": 0.5386181670392196,
+      "T3": 0.46548278023887785
+    }
+  },
+  "limits": "The SAE was trained on only 192 prompt-level training examples and is a small reconstruction-validated dictionary, not a public large-scale SAE suite. Nominal FPR is not a calibrated safety guarantee."
+}

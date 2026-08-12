@@ -1,0 +1,547 @@
+{
+  "experiment": "NN1 grouped sparse compression controls",
+  "analysis_status": "post-hoc nested-CV analysis of frozen trajectories",
+  "data": "data/fpe14_qwen15_trivia_confirmatory_trajectory.jsonl",
+  "cache": "outputs/cache/fpe14_qwen15_trivia_confirmatory_trajectory_states.npz",
+  "tokenizer": "Qwen/Qwen2.5-1.5B-Instruct",
+  "device": "cuda",
+  "seed": 20260726,
+  "n_trajectories": 3200,
+  "n_questions": 400,
+  "has_sae": false,
+  "dimensions": {
+    "raw": 1536,
+    "sae": null,
+    "confidence": 10
+  },
+  "k_values": [
+    1,
+    2,
+    4,
+    8,
+    16,
+    32,
+    64
+  ],
+  "protocol": {
+    "outer_split": "five pair-id-grouped folds",
+    "leakage_control": "all transforms and supports refit inside outer training fold",
+    "endpoint": "next-token first-divergence hazard at T1-T3",
+    "trajectory_score": "maximum available OOF hazard probability over T1-T3",
+    "random_supports": {
+      "k8": 20,
+      "other_k": 5
+    },
+    "bootstrap": "question-grouped paired bootstrap, 1000 repeats"
+  },
+  "fit_diagnostics": [
+    {
+      "fold": 0,
+      "stage": "T1",
+      "n_train": 1349,
+      "n_test": 280,
+      "events_train": 413,
+      "events_test": 99,
+      "l1_nonzero_before_truncation": 69,
+      "importance": {
+        "importance_l1": 8.773202406463497,
+        "importance_max": 0.021814046427607536,
+        "target_mean": 0.3061527057079318
+      }
+    },
+    {
+      "fold": 0,
+      "stage": "T2",
+      "n_train": 806,
+      "n_test": 150,
+      "events_train": 219,
+      "events_test": 25,
+      "l1_nonzero_before_truncation": 41,
+      "importance": {
+        "importance_l1": 11.696897837612994,
+        "importance_max": 0.03146488964557648,
+        "target_mean": 0.271712158808933
+      }
+    },
+    {
+      "fold": 0,
+      "stage": "T3",
+      "n_train": 349,
+      "n_test": 82,
+      "events_train": 56,
+      "events_test": 7,
+      "l1_nonzero_before_truncation": 14,
+      "importance": {
+        "importance_l1": 9.695346723215152,
+        "importance_max": 0.026711782440543175,
+        "target_mean": 0.16045845272206305
+      }
+    },
+    {
+      "fold": 1,
+      "stage": "T1",
+      "n_train": 1307,
+      "n_test": 322,
+      "events_train": 387,
+      "events_test": 125,
+      "l1_nonzero_before_truncation": 60,
+      "importance": {
+        "importance_l1": 9.230583146714253,
+        "importance_max": 0.02298666164278984,
+        "target_mean": 0.29609793420045905
+      }
+    },
+    {
+      "fold": 1,
+      "stage": "T2",
+      "n_train": 784,
+      "n_test": 172,
+      "events_train": 190,
+      "events_test": 54,
+      "l1_nonzero_before_truncation": 43,
+      "importance": {
+        "importance_l1": 10.950037774225962,
+        "importance_max": 0.0326145701110363,
+        "target_mean": 0.2423469387755102
+      }
+    },
+    {
+      "fold": 1,
+      "stage": "T3",
+      "n_train": 340,
+      "n_test": 91,
+      "events_train": 49,
+      "events_test": 14,
+      "l1_nonzero_before_truncation": 13,
+      "importance": {
+        "importance_l1": 7.493311324966271,
+        "importance_max": 0.020737450569868088,
+        "target_mean": 0.14411764705882352
+      }
+    },
+    {
+      "fold": 2,
+      "stage": "T1",
+      "n_train": 1314,
+      "n_test": 315,
+      "events_train": 411,
+      "events_test": 101,
+      "l1_nonzero_before_truncation": 63,
+      "importance": {
+        "importance_l1": 8.68048792243917,
+        "importance_max": 0.02060825563967228,
+        "target_mean": 0.3127853881278539
+      }
+    },
+    {
+      "fold": 2,
+      "stage": "T2",
+      "n_train": 778,
+      "n_test": 178,
+      "events_train": 205,
+      "events_test": 39,
+      "l1_nonzero_before_truncation": 32,
+      "importance": {
+        "importance_l1": 10.839911396785283,
+        "importance_max": 0.03415079414844513,
+        "target_mean": 0.2634961439588689
+      }
+    },
+    {
+      "fold": 2,
+      "stage": "T3",
+      "n_train": 348,
+      "n_test": 83,
+      "events_train": 52,
+      "events_test": 11,
+      "l1_nonzero_before_truncation": 14,
+      "importance": {
+        "importance_l1": 8.24861366361256,
+        "importance_max": 0.02345818467438221,
+        "target_mean": 0.14942528735632185
+      }
+    },
+    {
+      "fold": 3,
+      "stage": "T1",
+      "n_train": 1271,
+      "n_test": 358,
+      "events_train": 410,
+      "events_test": 102,
+      "l1_nonzero_before_truncation": 52,
+      "importance": {
+        "importance_l1": 9.883015066558073,
+        "importance_max": 0.024901529774069786,
+        "target_mean": 0.3225806451612903
+      }
+    },
+    {
+      "fold": 3,
+      "stage": "T2",
+      "n_train": 732,
+      "n_test": 224,
+      "events_train": 178,
+      "events_test": 66,
+      "l1_nonzero_before_truncation": 39,
+      "importance": {
+        "importance_l1": 11.888069553984678,
+        "importance_max": 0.03744073584675789,
+        "target_mean": 0.24316939890710382
+      }
+    },
+    {
+      "fold": 3,
+      "stage": "T3",
+      "n_train": 347,
+      "n_test": 84,
+      "events_train": 48,
+      "events_test": 15,
+      "l1_nonzero_before_truncation": 13,
+      "importance": {
+        "importance_l1": 8.307486446044251,
+        "importance_max": 0.023077577352523804,
+        "target_mean": 0.138328530259366
+      }
+    },
+    {
+      "fold": 4,
+      "stage": "T1",
+      "n_train": 1275,
+      "n_test": 354,
+      "events_train": 427,
+      "events_test": 85,
+      "l1_nonzero_before_truncation": 64,
+      "importance": {
+        "importance_l1": 8.997013266778595,
+        "importance_max": 0.022268762812018394,
+        "target_mean": 0.3349019607843137
+      }
+    },
+    {
+      "fold": 4,
+      "stage": "T2",
+      "n_train": 724,
+      "n_test": 232,
+      "events_train": 184,
+      "events_test": 60,
+      "l1_nonzero_before_truncation": 33,
+      "importance": {
+        "importance_l1": 12.081339092841517,
+        "importance_max": 0.031221915036439896,
+        "target_mean": 0.2541436464088398
+      }
+    },
+    {
+      "fold": 4,
+      "stage": "T3",
+      "n_train": 340,
+      "n_test": 91,
+      "events_train": 47,
+      "events_test": 16,
+      "l1_nonzero_before_truncation": 11,
+      "importance": {
+        "importance_l1": 8.940771643846347,
+        "importance_max": 0.0257321335375309,
+        "target_mean": 0.13823529411764707
+      }
+    }
+  ],
+  "capacity_selection": [
+    {
+      "fold": 0,
+      "selection_fold": 1,
+      "raw_selected_k": 64,
+      "raw_candidates": [
+        {
+          "k": 1,
+          "mean_group_nll": 0.5322655724921453,
+          "se_group_nll": 0.08199474253904439,
+          "n_validation_questions": 53,
+          "selected": false
+        },
+        {
+          "k": 2,
+          "mean_group_nll": 0.5119993768517903,
+          "se_group_nll": 0.0856457406929497,
+          "n_validation_questions": 53,
+          "selected": false
+        },
+        {
+          "k": 4,
+          "mean_group_nll": 0.49007883247807377,
+          "se_group_nll": 0.08211381280600273,
+          "n_validation_questions": 53,
+          "selected": false
+        },
+        {
+          "k": 8,
+          "mean_group_nll": 0.5272650013513125,
+          "se_group_nll": 0.09774162914736871,
+          "n_validation_questions": 53,
+          "selected": false
+        },
+        {
+          "k": 16,
+          "mean_group_nll": 0.5004961006302953,
+          "se_group_nll": 0.09449834733436252,
+          "n_validation_questions": 53,
+          "selected": false
+        },
+        {
+          "k": 32,
+          "mean_group_nll": 0.4665134099915713,
+          "se_group_nll": 0.08366662322957498,
+          "n_validation_questions": 53,
+          "selected": false
+        },
+        {
+          "k": 64,
+          "mean_group_nll": 0.46122848372651964,
+          "se_group_nll": 0.08442437082570903,
+          "n_validation_questions": 53,
+          "selected": true
+        }
+      ],
+      "sae_selected_k": null,
+      "sae_candidates": []
+    },
+    {
+      "fold": 1,
+      "selection_fold": 2,
+      "raw_selected_k": 64,
+      "raw_candidates": [
+        {
+          "k": 1,
+          "mean_group_nll": 0.38143950379662017,
+          "se_group_nll": 0.06542793486845701,
+          "n_validation_questions": 53,
+          "selected": false
+        },
+        {
+          "k": 2,
+          "mean_group_nll": 0.335722151032576,
+          "se_group_nll": 0.05292087777666405,
+          "n_validation_questions": 53,
+          "selected": false
+        },
+        {
+          "k": 4,
+          "mean_group_nll": 0.34703493944375174,
+          "se_group_nll": 0.056640119685774766,
+          "n_validation_questions": 53,
+          "selected": false
+        },
+        {
+          "k": 8,
+          "mean_group_nll": 0.3259642491266458,
+          "se_group_nll": 0.05905202939317049,
+          "n_validation_questions": 53,
+          "selected": false
+        },
+        {
+          "k": 16,
+          "mean_group_nll": 0.3306489742117624,
+          "se_group_nll": 0.056707574768761836,
+          "n_validation_questions": 53,
+          "selected": false
+        },
+        {
+          "k": 32,
+          "mean_group_nll": 0.32909903546854435,
+          "se_group_nll": 0.061321274962856914,
+          "n_validation_questions": 53,
+          "selected": false
+        },
+        {
+          "k": 64,
+          "mean_group_nll": 0.3089853470969003,
+          "se_group_nll": 0.058502140304903055,
+          "n_validation_questions": 53,
+          "selected": true
+        }
+      ],
+      "sae_selected_k": null,
+      "sae_candidates": []
+    },
+    {
+      "fold": 2,
+      "selection_fold": 3,
+      "raw_selected_k": 64,
+      "raw_candidates": [
+        {
+          "k": 1,
+          "mean_group_nll": 0.516434912767494,
+          "se_group_nll": 0.07700699911090497,
+          "n_validation_questions": 57,
+          "selected": false
+        },
+        {
+          "k": 2,
+          "mean_group_nll": 0.4692271925374899,
+          "se_group_nll": 0.0696232410169563,
+          "n_validation_questions": 57,
+          "selected": false
+        },
+        {
+          "k": 4,
+          "mean_group_nll": 0.4882598409194683,
+          "se_group_nll": 0.0821892790861522,
+          "n_validation_questions": 57,
+          "selected": false
+        },
+        {
+          "k": 8,
+          "mean_group_nll": 0.487497503686239,
+          "se_group_nll": 0.08178635330647174,
+          "n_validation_questions": 57,
+          "selected": false
+        },
+        {
+          "k": 16,
+          "mean_group_nll": 0.4554393417916068,
+          "se_group_nll": 0.0752524098962029,
+          "n_validation_questions": 57,
+          "selected": false
+        },
+        {
+          "k": 32,
+          "mean_group_nll": 0.43835330305660947,
+          "se_group_nll": 0.07697826603281967,
+          "n_validation_questions": 57,
+          "selected": false
+        },
+        {
+          "k": 64,
+          "mean_group_nll": 0.42389679197771474,
+          "se_group_nll": 0.07367159328241543,
+          "n_validation_questions": 57,
+          "selected": true
+        }
+      ],
+      "sae_selected_k": null,
+      "sae_candidates": []
+    },
+    {
+      "fold": 3,
+      "selection_fold": 4,
+      "raw_selected_k": 64,
+      "raw_candidates": [
+        {
+          "k": 1,
+          "mean_group_nll": 0.37006272646380284,
+          "se_group_nll": 0.04827951969874586,
+          "n_validation_questions": 57,
+          "selected": false
+        },
+        {
+          "k": 2,
+          "mean_group_nll": 0.3577936230391576,
+          "se_group_nll": 0.0538680248393155,
+          "n_validation_questions": 57,
+          "selected": false
+        },
+        {
+          "k": 4,
+          "mean_group_nll": 0.350575151349161,
+          "se_group_nll": 0.06366325308949021,
+          "n_validation_questions": 57,
+          "selected": false
+        },
+        {
+          "k": 8,
+          "mean_group_nll": 0.3263541868591994,
+          "se_group_nll": 0.058616581861108887,
+          "n_validation_questions": 57,
+          "selected": false
+        },
+        {
+          "k": 16,
+          "mean_group_nll": 0.32612436091623126,
+          "se_group_nll": 0.05979014689604531,
+          "n_validation_questions": 57,
+          "selected": false
+        },
+        {
+          "k": 32,
+          "mean_group_nll": 0.33021066937167437,
+          "se_group_nll": 0.05615477648750619,
+          "n_validation_questions": 57,
+          "selected": false
+        },
+        {
+          "k": 64,
+          "mean_group_nll": 0.32490010925473084,
+          "se_group_nll": 0.051931399381158205,
+          "n_validation_questions": 57,
+          "selected": true
+        }
+      ],
+      "sae_selected_k": null,
+      "sae_candidates": []
+    },
+    {
+      "fold": 4,
+      "selection_fold": 0,
+      "raw_selected_k": 64,
+      "raw_candidates": [
+        {
+          "k": 1,
+          "mean_group_nll": 0.35692055779495074,
+          "se_group_nll": 0.03365392861171126,
+          "n_validation_questions": 49,
+          "selected": false
+        },
+        {
+          "k": 2,
+          "mean_group_nll": 0.34456842961618533,
+          "se_group_nll": 0.03961176088415512,
+          "n_validation_questions": 49,
+          "selected": false
+        },
+        {
+          "k": 4,
+          "mean_group_nll": 0.3194281120141053,
+          "se_group_nll": 0.03820081171324623,
+          "n_validation_questions": 49,
+          "selected": false
+        },
+        {
+          "k": 8,
+          "mean_group_nll": 0.329402597324783,
+          "se_group_nll": 0.04083405855412266,
+          "n_validation_questions": 49,
+          "selected": false
+        },
+        {
+          "k": 16,
+          "mean_group_nll": 0.31356515059509366,
+          "se_group_nll": 0.037361534256612046,
+          "n_validation_questions": 49,
+          "selected": false
+        },
+        {
+          "k": 32,
+          "mean_group_nll": 0.3130307122288623,
+          "se_group_nll": 0.039619221997406924,
+          "n_validation_questions": 49,
+          "selected": false
+        },
+        {
+          "k": 64,
+          "mean_group_nll": 0.3047934806927411,
+          "se_group_nll": 0.03606200838293721,
+          "n_validation_questions": 49,
+          "selected": true
+        }
+      ],
+      "sae_selected_k": null,
+      "sae_candidates": []
+    }
+  ],
+  "stage_summary": [
+    {
+      "method": "confidence",
+      "stage": "T1",
+      "n": 1629,
+      "events": 512,
+      "auß~¹êÚ$z{-®éÜj×¢'&VfW&Væ6R#¢&FVç6U÷&r"ÀĞ¢&ÖWG&–2#¢&W&ö2"ÀĞ¢&÷&–VçFF–öâ#¢&6æF–FFR×&VfW&Væ6S²Æ÷vW"—2&WGFW"öæÇ’f÷"'&–W""ÀĞ¢&ÖVâ#¢ãc“s#ƒ“ss#3CS“bÀĞ¢&6““UöÆ÷r#¢Óã3Sƒ###3SscrÀĞ¢&6““Uö†–v‚#¢ã33Sƒ“ƒsCs3ƒƒBÀĞ¢'&ö&&–Æ—G•÷÷6—F—fR#¢ãƒ3bÀĞ¢&å÷fÆ–B#¢ Ğ¢ÒÀĞ¢°Ğ¢&6æF–FFR#¢'7WW'f—6VE÷&uö³‚"ÀĞ¢'&VfW&Væ6R#¢&FVç6U÷&r"ÀĞ¢&ÖWG&–2#¢&W&2"ÀĞ¢&÷&–VçFF–öâ#¢&6æF–FFR×&VfW&Væ6S²Æ÷vW"—2&WGFW"öæÇ’f÷"'&–W""ÀĞ¢&ÖVâ#¢ãCSCƒ#ƒC#ƒSRÀĞ¢&6““UöÆ÷r#¢Óã3“sƒSƒ#sƒCsC3SbÀĞ¢&6““Uö†–v‚#¢ã3Ss3#ssc“sSC“S#ÀĞ¢'&ö&&–Æ—G•÷÷6—F—fR#¢ãssbÀĞ¢&å÷fÆ–B#¢ Ğ¢ÒÀĞ¢°Ğ¢&6æF–FFR#¢'7WW'f—6VE÷&uö³‚"ÀĞ¢'&VfW&Væ6R#¢&FVç6U÷&r"ÀĞ¢&ÖWG&–2#¢&'&–W""ÀĞ¢&÷&–VçFF–öâ#¢&6æF–FFR×&VfW&Væ6S²Æ÷vW"—2&WGFW"öæÇ’f÷"'&–W""ÀĞ¢&ÖVâ#¢ÓãCcC33ssC“C#srÀĞ¢&6““UöÆ÷r#¢Óã#ƒ#Cc3c33ƒ#csBÀĞ¢&6““Uö†–v‚#¢ÓãC33#ƒC“s#ƒ3#“bÀĞ¢'&ö&&–Æ—G•÷÷6—F—fR#¢ã#ÀĞ¢&å÷fÆ–B#¢ Ğ¢ÒÀĞ¢°Ğ¢&6æF–FFR#¢'7WW'f—6VE÷&uö³‚"ÀĞ¢'&VfW&Væ6R#¢&6öæf–FVæ6R"ÀĞ¢&ÖWG&–2#¢&W&ö2"ÀĞ¢&÷&–VçFF–öâ#¢&6æF–FFR×&VfW&Væ6S²Æ÷vW"—2&WGFW"öæÇ’f÷"'&–W""ÀĞ¢&ÖVâ#¢ãS33s“3“#C3ccBÀĞ¢&6““UöÆ÷r#¢ã#“s“sSscCSs‚ÀĞ¢&6““Uö†–v‚#¢ãƒ“Cc“#Ssƒc“ccSRÀĞ¢'&ö&&–Æ—G•÷÷6—F—fR#¢ã““‚ÀĞ¢&å÷fÆ–B#¢ Ğ¢ÒÀĞ¢°Ğ¢&6æF–FFR#¢'7WW'f—6VE÷&uö³‚"ÀĞ¢'&VfW&Væ6R#¢&6öæf–FVæ6R"ÀĞ¢&ÖWG&–2#¢&W&2"ÀĞ¢&÷&–VçFF–öâ#¢&6æF–FFR×&VfW&Væ6S²Æ÷vW"—2&WGFW"öæÇ’f÷"'&–W""ÀĞ¢&ÖVâ#¢ã33c“S3#c#ƒSRÀĞ¢&6““UöÆ÷r#¢ÓãcSs“S3““###3‚ÀĞ¢&6““Uö†–v‚#¢ãc“C“SƒcƒSC2ÀĞ¢'&ö&&–Æ—G•÷÷6—F—fR#¢ã“rÀĞ¢&å÷fÆ–B#¢ Ğ¢ÒÀĞ¢°Ğ¢&6æF–FFR#¢'7WW'f—6VE÷&uö³‚"ÀĞ¢'&VfW&Væ6R#¢&6öæf–FVæ6R"ÀĞ¢&ÖWG&–2#¢&'&–W""ÀĞ¢&÷&–VçFF–öâ#¢&6æF–FFR×&VfW&Væ6S²Æ÷vW"—2&WGFW"öæÇ’f÷"'&–W""ÀĞ¢&ÖVâ#¢Óã3S3ƒS3S##SCC#cCbÀĞ¢&6““UöÆ÷r#¢ÓãSCsc“ccsS#3cRÀĞ¢&6““Uö†–v‚#¢ÓãscssCS#CsƒCsRÀĞ¢'&ö&&–Æ—G•÷÷6—F—fR#¢ãÀĞ¢&å÷fÆ–B#¢ Ğ¢ÒÀĞ¢°Ğ¢&6æF–FFR#¢&Ã÷&uö³‚"ÀĞ¢'&VfW&Væ6R#¢&FVç6U÷&r"ÀĞ¢&ÖWG&–2#¢&W&ö2"ÀĞ¢&÷&–VçFF–öâ#¢&6æF–FFR×&VfW&Væ6S²Æ÷vW"—2&WGFW"öæÇ’f÷"'&–W""ÀĞ¢&ÖVâ#¢ãCCs#ƒC#33#CS#BÀĞ¢&6““UöÆ÷r#¢Óã#ƒC“SSƒƒ“S“ƒC"ÀĞ¢&6““Uö†–v‚#¢ã#cSCc#c3#SssCCbÀĞ¢'&ö&&–Æ—G•÷÷6—F—fR#¢ãSbÀĞ¢&å÷fÆ–B#¢ Ğ¢ÒÀĞ¢°Ğ¢&6æF–FFR#¢&Ã÷&uö³‚"ÀĞ¢'&VfW&Væ6R#¢&FVç6U÷&r"ÀĞ¢&ÖWG&–2#¢&W&2"ÀĞ¢&÷&–VçFF–öâ#¢&6æF–FFR×&VfW&Væ6S²Æ÷vW"—2&WGFW"öæÇ’f÷"'&–W""ÀĞ¢&ÖVâ#¢ã#cSSs##C3bÀĞ¢&6““UöÆ÷r#¢Óã3CSSƒ#ScssSs3S“BÀĞ¢&6““Uö†–v‚#¢ã3CS#Csƒ“#C“#C2ÀĞ¢'&ö&&–Æ—G•÷÷6—F—fR#¢ãS3"ÀĞ¢&å÷fÆ–B#¢ Ğ¢ÒÀĞ¢°Ğ¢&6æF–FFR#¢&Ã÷&uö³‚"ÀĞ¢'&VfW&Væ6R#¢&FVç6U÷&r"ÀĞ¢&ÖWG&–2#¢&'&–W""ÀĞ¢&÷&–VçFF–öâ#¢&6æF–FFR×&VfW&Væ6S²Æ÷vW"—2&WGFW"öæÇ’f÷"'&–W""ÀĞ¢&ÖVâ#¢Óã“SsS33“CssscBÀĞ¢&6““UöÆ÷r#¢Óã#3#cC“##S#SrÀĞ¢&6““Uö†–v‚#¢ãCc3Sƒcƒss3“CsBÀĞ¢'&ö&&–Æ—G•÷÷6—F—fR#¢ã2ÀĞ¢&å÷fÆ–B#¢ Ğ¢ÒÀĞ¢°Ğ¢&6æF–FFR#¢&Ã÷&uö³‚"ÀĞ¢'&VfW&Væ6R#¢&6öæf–FVæ6R"ÀĞ¢&ÖWG&–2#¢&W&ö2"ÀĞ¢&÷&–VçFF–öâ#¢&6æF–FFR×&VfW&Væ6S²Æ÷vW"—2&WGFW"öæÇ’f÷"'&–W""ÀĞ¢&ÖVâ#¢ãC3c“sC#“#C3“BÀĞ¢&6““UöÆ÷r#¢ãƒcC3SCCS“###“rÀĞ¢&6““Uö†–v‚#¢ãsƒsC#c#SCSccÀĞ¢'&ö&&–Æ—G•÷÷6—F—fR#¢ã“ƒ’ÀĞ¢&å÷fÆ–B#¢ Ğ¢ÒÀĞ¢°Ğ¢&6æF–FFR#¢&Ã÷&uö³‚"ÀĞ¢'&VfW&Væ6R#¢&6öæf–FVæ6R"ÀĞ¢&ÖWG&–2#¢&W&2"ÀĞ¢&÷&–VçFF–öâ#¢&6æF–FFR×&VfW&Væ6S²Æ÷vW"—2&WGFW"öæÇ’f÷"'&–W""ÀĞ¢&ÖVâ#¢ã#c#SƒccsC#cƒRÀĞ¢&6““UöÆ÷r#¢Óã##“3sƒ“3#“#RÀĞ¢&6““Uö†–v‚#¢ãcSSƒcc“CCsƒÀĞ¢'&ö&&–Æ—G•÷÷6—F—fR#¢ãƒƒ’ÀĞ¢&å÷fÆ–B#¢ Ğ¢ÒÀĞ¢°Ğ¢&6æF–FFR#¢&Ã÷&uö³‚"ÀĞ¢'&VfW&Væ6R#¢&6öæf–FVæ6R"ÀĞ¢&ÖWG&–2#¢&'&–W""ÀĞ¢&÷&–VçFF–öâ#¢&6æF–FFR×&VfW&Væ6S²Æ÷vW"—2&WGFW"öæÇ’f÷"'&–W""ÀĞ¢&ÖVâ#¢Óã#“ƒƒCSCc3ScCc‚ÀĞ¢&6““UöÆ÷r#¢ÓãCƒScC3ScsC#3c‚ÀĞ¢&6““Uö†–v‚#¢Óã#3ƒƒ3CCS“ƒCC3s"ÀĞ¢'&ö&&–Æ—G•÷÷6—F—fR#¢ãÀĞ¢&å÷fÆ–B#¢ Ğ¢ÒÀĞ¢°Ğ¢&6æF–FFR#¢'6ö³‚"ÀĞ¢'&VfW&Væ6R#¢&FVç6U÷&r"ÀĞ¢&ÖWG&–2#¢&W&ö2"ÀĞ¢&÷&–VçFF–öâ#¢&6æF–FFR×&VfW&Væ6S²Æ÷vW"—2&WGFW"öæÇ’f÷"'&–W""ÀĞ¢&ÖVâ#¢ãCC#C“ƒ#Ss#BÀĞ¢&6““UöÆ÷r#¢ÓãC33“S3C“cC‚ÀĞ¢&6““Uö†–v‚#¢ã3Cƒscs###s#““2ÀĞ¢'&ö&&–Æ—G•÷÷6—F—fR#¢ãƒ2ÀĞ¢&å÷fÆ–B#¢ Ğ¢ÒÀĞ¢°Ğ¢&6æF–FFR#¢'6ö³‚"ÀĞ¢'&VfW&Væ6R#¢&FVç6U÷&r"ÀĞ¢&ÖWG&–2#¢&W&2"ÀĞ¢&÷&–VçFF–öâ#¢&6æF–FFR×&VfW&Væ6S²Æ÷vW"—2&WGFW"öæÇ’f÷"'&–W""ÀĞ¢&ÖVâ#¢ãS3S“ss3#33ƒƒBÀĞ¢&6““UöÆ÷r#¢Óã3Cƒcƒ3ƒ“cSƒ‚ÀĞ¢&6““Uö†–v‚#¢ãCsss#ƒ“cS3S3bÀĞ¢'&ö&&–Æ—G•÷÷6—F—fR#¢ãƒƒBÀĞ¢&å÷fÆ–B#¢ Ğ¢ÒÀĞ¢°Ğ¢&6æF–FFR#¢'6ö³‚"ÀĞ¢'&VfW&Væ6R#¢&FVç6U÷&r"ÀĞ¢&ÖWG&–2#¢&'&–W""ÀĞ¢&÷&–VçFF–öâ#¢&6æF–FFR×&VfW&Væ6S²Æ÷vW"—2&WGFW"öæÇ’f÷"'&–W""ÀĞ¢&ÖVâ#¢Óã#S3ƒ““3c““##S3ƒcbÀĞ¢&6““UöÆ÷r#¢Óãsssƒ““#ƒc“3SSBÀĞ¢&6““Uö†–v‚#¢ã#3CcC3C“cS#s2ÀĞ¢'&ö&&–Æ—G•÷÷6—F—fR#¢ãsRÀĞ¢&å÷fÆ–B#¢ Ğ¢ÒÀĞ¢°Ğ¢&6æF–FFR#¢'6ö³‚"ÀĞ¢'&VfW&Væ6R#¢&6öæf–FVæ6R"ÀĞ¢&ÖWG&–2#¢&W&ö2"ÀĞ¢&÷&–VçFF–öâ#¢&6æF–FFR×&VfW&Væ6S²Æ÷vW"—2&WGFW"öæÇ’f÷"'&–W""ÀĞ¢&ÖVâ#¢ãCs#CSSC#3“3CrÀĞ¢&6““UöÆ÷r#¢ã#cCc#CsCsS“sÀĞ¢&6““Uö†–v‚#¢ãs3S3Scs“ScS3ƒ“BÀĞ¢'&ö&&–Æ—G•÷÷6—F—fR#¢ãÀĞ¢&å÷fÆ–B#¢ Ğ¢ÒÀĞ¢°Ğ¢&6æF–FFR#¢'6ö³‚"ÀĞ¢'&VfW&Væ6R#¢&6öæf–FVæ6R"ÀĞ¢&ÖWG&–2#¢&W&2"ÀĞ¢&÷&–VçFF–öâ#¢&6æF–FFR×&VfW&Væ6S²Æ÷vW"—2&WGFW"öæÇ’f÷"'&–W""ÀĞ¢&ÖVâ#¢ã33““sƒSsƒsƒ3’ÀĞ¢&6““UöÆ÷r#¢ã“Sƒs3sƒsC“ƒ2ÀĞ¢&6““Uö†–v‚#¢ãSSSCSSCC“CC“SCRÀĞ¢'&ö&&–Æ—G•÷÷6—F—fR#¢ãÀĞ¢&å÷fÆ–B#¢ Ğ¢ÒÀĞ¢°Ğ¢&6æF–FFR#¢'6ö³‚"ÀĞ¢'&VfW&Væ6R#¢&6öæf–FVæ6R"ÀĞ¢&ÖWG&–2#¢&'&–W""ÀĞ¢&÷&–VçFF–öâ#¢&6æF–FFR×&VfW&Væ6S²Æ÷vW"—2&WGFW"öæÇ’f÷"'&–W""ÀĞ¢&ÖVâ#¢Óã#3Sƒs#ƒCC“s‚ÀĞ¢&6““UöÆ÷r#¢Óã33ƒ3cƒC#“S3CscÀĞ¢&6““Uö†–v‚#¢Óã“sƒ3Cs““CcS“S3BÀĞ¢'&ö&&–Æ—G•÷÷6—F—fR#¢ãÀĞ¢&å÷fÆ–B#¢ Ğ¢ÒÀĞ¢°Ğ¢&6æF–FFR#¢&vW76–å÷'ö³‚"ÀĞ¢'&VfW&Væ6R#¢&FVç6U÷&r"ÀĞ¢&ÖWG&–2#¢&W&ö2"ÀĞ¢&÷&–VçFF–öâ#¢&6æF–FFR×&VfW&Væ6S²Æ÷vW"—2&WGFW"öæÇ’f÷"'&–W""ÀĞ¢&ÖVâ#¢Óã3#“ccƒ“c#ƒ“SsC3BÀĞ¢&6““UöÆ÷r#¢ÓãSSSss#“#33SSCcBÀĞ¢&6““Uö†–v‚#¢Óã3SS“sSs33#“3bÀĞ¢'&ö&&–Æ—G•÷÷6—F—fR#¢ãÀĞ¢&å÷fÆ–B#¢ Ğ¢ÒÀĞ¢°Ğ¢&6æF–FFR#¢&vW76–å÷'ö³‚"ÀĞ¢'&VfW&Væ6R#¢&FVç6U÷&r"ÀĞ¢&ÖWG&–2#¢&W&2"ÀĞ¢&÷&–VçFF–öâ#¢&6æF–FFR×&VfW&Væ6S²Æ÷vW"—2&WGFW"öæÇ’f÷"'&–W""ÀĞ¢&ÖVâ#¢Óã“C“S3sƒ#“ƒSs‚ÀĞ¢&6““UöÆ÷r#¢Óã3cScS“#3s3ƒRÀĞ¢&6““Uö†–v‚#¢ÓãCsCcs“3scƒ#CSRÀĞ¢'&ö&&–Æ—G•÷÷6—F—fR#¢ãrÀĞ¢&å÷fÆ–B#¢ Ğ¢ÒÀĞ¢°Ğ¢&6æF–FFR#¢&vW76–å÷'ö³‚"ÀĞ¢'&VfW&Væ6R#¢&FVç6U÷&r"ÀĞ¢&ÖWG&–2#¢&'&–W""ÀĞ¢&÷&–VçFF–öâ#¢&6æF–FFR×&VfW&Væ6S²Æ÷vW"—2&WGFW"öæÇ’f÷"'&–W""ÀĞ¢&ÖVâ#¢ãcCscƒScc“#ƒ#s“"ÀĞ¢&6““UöÆ÷r#¢ãƒ#c“Ss““3RÀĞ¢&6““Uö†–v‚#¢ã#S3S“3“#3Scc3RÀĞ¢'&ö&&–Æ—G•÷÷6—F—fR#¢ãÀĞ¢&å÷fÆ–B#¢ Ğ¢ÒÀĞ¢°Ğ¢&6æF–FFR#¢&vW76–å÷'ö³‚"ÀĞ¢'&VfW&Væ6R#¢&6öæf–FVæ6R"ÀĞ¢&ÖWG&–2#¢&W&ö2"ÀĞ¢&÷&–VçFF–öâ#¢&6æF–FFR×&VfW&Væ6S²Æ÷vW"—2&WGFW"öæÇ’f÷"'&–W""ÀĞ¢&ÖVâ#¢ãsCCSsƒ“S“CSBÀĞ¢&6““UöÆ÷r#¢Óã“Cc3S#3ss#ƒ2ÀĞ¢&6““Uö†–v‚#¢ã#“CSƒ“Cƒ3#s2ÀĞ¢'&ö&&–Æ—G•÷÷6—F—fR#¢ãƒ3BÀĞ¢&å÷fÆ–B#¢ Ğ¢ÒÀĞ¢°Ğ¢&6æF–FFR#¢&vW76–å÷'ö³‚"ÀĞ¢'&VfW&Væ6R#¢&6öæf–FVæ6R"ÀĞ¢&ÖWG&–2#¢&W&2"ÀĞ¢&÷&–VçFF–öâ#¢&6æF–FFR×&VfW&Væ6S²Æ÷vW"—2&WGFW"öæÇ’f÷"'&–W""ÀĞ¢&ÖVâ#¢ãSƒsƒSƒC3ƒ#cÀĞ¢&6““UöÆ÷r#¢Óã“#csSc#sCcƒ‚ÀĞ¢&6““Uö†–v‚#¢ã#ƒ#S“c3ƒ““3SSS‚ÀĞ¢'&ö&&–Æ—G•÷÷6—F—fR#¢ãsSbÀĞ¢&å÷fÆ–B#¢ Ğ¢ÒÀĞ¢°Ğ¢&6æF–FFR#¢&vW76–å÷'ö³‚"ÀĞ¢'&VfW&Væ6R#¢&6öæf–FVæ6R"ÀĞ¢&ÖWG&–2#¢&'&–W""ÀĞ¢&÷&–VçFF–öâ#¢&6æF–FFR×&VfW&Væ6S²Æ÷vW"—2&WGFW"öæÇ’f÷"'&–W""ÀĞ¢&ÖVâ#¢ÓãCC#sƒ““csS“sc’ÀĞ¢&6““UöÆ÷r#¢ÓãCSƒƒ3sƒƒs“RÀĞ¢&6““Uö†–v‚#¢ã#ƒS#33#ƒCS2ÀĞ¢'&ö&&–Æ—G•÷÷6—F—fR#¢ã32ÀĞ¢&å÷fÆ–B#¢ Ğ¢ĞĞ¢ÒÀĞ¢'7W÷'E÷7F&–Æ—G’#¢°Ğ¢°Ğ¢&fÖ–Ç’#¢'7WW'f—6VE÷&r"ÀĞ¢&²#¢ÀĞ¢&7&÷75öföÆEö¦66&EöÖVâ#¢ãbÀĞ¢&F¦6VçE÷7FvUö¦66&EöÖVâ#¢ã Ğ¢ÒÀĞ¢°Ğ¢&fÖ–Ç’#¢'7WW'f—6VE÷&r"ÀĞ¢&²#¢"ÀĞ¢&7&÷75öföÆEö¦66&EöÖVâ#¢ãCCCCCCCCCCCCCCCRÀĞ¢&F¦6VçE÷7FvUö¦66&EöÖVâ#¢ã Ğ¢ÒÀĞ¢°Ğ¢&fÖ–Ç’#¢'7WW'f—6VE÷&r"ÀĞ¢&²#¢BÀĞ¢&7&÷75öföÆEö¦66&EöÖVâ#¢ã#s3Sƒs3Sƒs3RÀĞ¢&F¦6VçE÷7FvUö¦66&EöÖVâ#¢ã Ğ¢ÒÀĞ¢°Ğ¢&fÖ–Ç’#¢'7WW'f—6VE÷&r"ÀĞ¢&²#¢‚ÀĞ¢&7&÷75öföÆEö¦66&EöÖVâ#¢ã#“3“SC“3“SC“3’ÀĞ¢&F¦6VçE÷7FvUö¦66&EöÖVâ#¢ã Ğ¢ÒÀĞ¢°Ğ¢&fÖ–Ç’#¢'7WW'f—6VE÷&r"ÀĞ¢&²#¢bÀĞ¢&7&÷75öföÆEö¦66&EöÖVâ#¢ã3SƒsSC#ƒCBÀĞ¢&F¦6VçE÷7FvUö¦66&EöÖVâ#¢ã3##SƒcCSc#“3 Ğ¢ÒÀĞ¢°Ğ¢&fÖ–Ç’#¢'7WW'f—6VE÷&r"ÀĞ¢&²#¢3"ÀĞ¢&7&÷75öföÆEö¦66&EöÖVâ#¢ã3S3Ssc“CsCƒc3bÀĞ¢&F¦6VçE÷7FvUö¦66&EöÖVâ#¢ã#cs#3“3c“S“PĞ¢ÒÀĞ¢°Ğ¢&fÖ–Ç’#¢'7WW'f—6VE÷&r"ÀĞ¢&²#¢cBÀĞ¢&7&÷75öföÆEö¦66&EöÖVâ#¢ã3c3#3ƒCs#3“C2ÀĞ¢&F¦6VçE÷7FvUö¦66&EöÖVâ#¢ã#ccs#ƒ“3Cƒƒsc€Ğ¢ĞĞ¢ÒÀĞ¢'&UöWfVçE÷WF–Æ—G’#¢°Ğ¢°Ğ¢&ÖWF†öB#¢&6öæf–FVæ6R"ÀĞ¢&²#¢çVÆÂÀĞ¢'F&vWEög"#¢ãRÀĞ¢&åö6÷'&V7B#¢ƒÀĞ¢&åöVÆ–v–&ÆUöW'&÷"#¢ƒ’ÀĞ¢&fÇ6UöÆW'B#¢CÀĞ¢&FWFV7FVB#¢3ÀĞ¢&7GVÅög"#¢ãScs#ƒ3“Scs#ƒRÀĞ¢'&UöWfVçE÷&V6ÆÂ#¢ã3cc33cc33cc2ÀĞ¢&ÖVå÷Fö¶VåöÆVB#¢ãscccccccccccccpĞ¢ÒÀĞ¢°Ğ¢&ÖWF†öB#¢&6öæf–FVæ6R"ÀĞ¢&²#¢çVÆÂÀĞ¢'F&vWEög"#¢ãÀĞ¢&åö6÷'&V7B#¢ƒÀĞ¢&åöVÆ–v–&ÆUöW'&÷"#¢ƒ’ÀĞ¢&fÇ6UöÆW'B#¢ƒrÀĞ¢&FWFV7FVB#¢C‚ÀĞ¢&7GVÅög"#¢ãsCsCsCsCsCÀĞ¢'&UöWfVçE÷&V6ÆÂ#¢ãC“ƒcƒC“ƒcƒC“ƒ"ÀĞ¢&ÖVå÷Fö¶VåöÆVB#¢ã“33s#SC““cpĞ¢ÒÀĞ¢°Ğ¢&ÖWF†öB#¢&6öæf–FVæ6R"ÀĞ¢&²#¢çVÆÂÀĞ¢'F&vWEög"#¢ã"ÀĞ¢&åö6÷'&V7B#¢ƒÀĞ¢&åöVÆ–v–&ÆUöW'&÷"#¢ƒ’ÀĞ¢&fÇ6UöÆW'B#¢SRÀĞ¢&FWFV7FVB#¢SsÀĞ¢&7GVÅög"#¢ã“3Sƒ#Cc“3SƒÀĞ¢'&UöWfVçE÷&V6ÆÂ#¢ãc“s“c“s“c“s"ÀĞ¢&ÖVå÷Fö¶VåöÆVB#¢ã“c3###Ccƒ#cĞ¢ÒÀĞ¢°Ğ¢&ÖWF†öB#¢&FVç6U÷&r"ÀĞ¢&²#¢çVÆÂÀĞ¢'F&vWEög"#¢ãRÀĞ¢&åö6÷'&V7B#¢ƒÀĞ¢&åöVÆ–v–&ÆUöW'&÷"#¢ƒ’ÀĞ¢&fÇ6UöÆW'B#¢SRÀĞ¢&FWFV7FVB#¢3C2ÀĞ¢&7GVÅög"#¢ãcs“#3CScs“#2ÀĞ¢'&UöWfVçE÷&V6ÆÂ#¢ãCƒƒ3Cƒƒ3Cƒ‚ÀĞ¢&ÖVå÷Fö¶VåöÆVB#¢ãc““sƒCSCƒC“PĞ¢ÒÀĞ¢°Ğ¢&ÖWF†öB#¢&FVç6U÷&r"ÀĞ¢&²#¢çVÆÂÀĞ¢'F&vWEög"#¢ãÀĞ¢&åö6÷'&V7B#¢ƒÀĞ¢&åöVÆ–v–&ÆUöW'&÷"#¢ƒ’ÀĞ¢&fÇ6UöÆW'B#¢s‚ÀĞ¢&FWFV7FVB#¢CC‚ÀĞ¢&7GVÅög"#¢ã“c#“c#“c#“c#“c2ÀĞ¢'&UöWfVçE÷&V6ÆÂ#¢ãSCsƒSCsƒSCsÀĞ¢&ÖVå÷Fö¶VåöÆVB#¢ã“SsƒSsC#ƒSs Ğ¢ÒÀĞ¢°Ğ¢&ÖWF†öB#¢&FVç6U÷&r"ÀĞ¢&²#¢çVÆÂÀĞ¢'F&vWEög"#¢ã"ÀĞ¢&åö6÷'&V7B#¢ƒÀĞ¢&åöVÆ–v–&ÆUöW'&÷"#¢ƒ’ÀĞ¢&fÇ6UöÆW'B#¢#bÀĞ¢&FWFV7FVB#¢cCÀĞ¢&7GVÅög"#¢ãSSSSSSSSSSSSSSSbÀĞ¢'&UöWfVçE÷&V6ÆÂ#¢ãsƒCCsƒCCsƒBÀĞ¢&ÖVå÷Fö¶VåöÆVB#¢ã“ƒC3sPĞ¢ÒÀĞ¢°Ğ¢&ÖWF†öB#¢&FF—fU÷&r"ÀĞ¢&²#¢çVÆÂÀĞ¢'F&vWEög"#¢ãRÀĞ¢&åö6÷'&V7B#¢ƒÀĞ¢&åöVÆ–v–&ÆUöW'&÷"#¢ƒ’ÀĞ¢&fÇ6UöÆW'B#¢3‚ÀĞ¢&FWFV7FVB#¢3’ÀĞ¢&7GVÅög"#¢ãCc“3Sƒ#Cc“3S‚ÀĞ¢'&UöWfVçE÷&V6ÆÂ#¢ã3ƒ“C““3ƒ“C““3ƒ“RÀĞ¢&ÖVå÷Fö¶VåöÆVB#¢ãƒsssC#“CcsƒCc@Ğ¢ÒÀĞ¢°Ğ¢&ÖWF†öB#¢&FF—fU÷&r"ÀĞ¢&²#¢çVÆÂÀĞ¢'F&vWEög"#¢ãÀĞ¢&åö6÷'&V7B#¢ƒÀĞ¢&åöVÆ–v–&ÆUöW'&÷"#¢ƒ’ÀĞ¢&fÇ6UöÆW'B#¢s‚ÀĞ¢&FWFV7FVB#¢S3bÀĞ¢&7GVÅög"#¢ã“c#“c#“c#“c#“c2ÀĞ¢'&UöWfVçE÷&V6ÆÂ#¢ãcSCCSccSCCSccSCRÀĞ¢&ÖVå÷Fö¶VåöÆVB#¢ã“3#ƒ3Sƒ#ƒ“SS#0Ğ¢ÒÀĞ¢°Ğ¢&ÖWF†öB#¢&FF—fU÷&r"ÀĞ¢&²#¢çVÆÂÀĞ¢'F&vWEög"#¢ã"ÀĞ¢&åö6÷'&V7B#¢ƒÀĞ¢&åöVÆ–v–&ÆUöW'&÷"#¢ƒ’ÀĞ¢&fÇ6UöÆW'B#¢3’ÀĞ¢&FWFV7FVB#¢c#‚ÀĞ¢&7GVÅög"#¢ãscC“3ƒ#scC“RÀĞ¢'&UöWfVçE÷&V6ÆÂ#¢ãsccsƒƒsccsƒƒscc‚ÀĞ¢&ÖVå÷Fö¶VåöÆVB#¢ã“ƒs#cCcC“cƒ`Ğ¢ÒÀĞ¢°Ğ¢&ÖWF†öB#¢'7WW'f—6VE÷&uö³‚"ÀĞ¢&²#¢çVÆÂÀĞ¢'F&vWEög"#¢ãRÀĞ¢&åö6÷'&V7B#¢ƒÀĞ¢&åöVÆ–v–&ÆUöW'&÷"#¢ƒ’ÀĞ¢&fÇ6UöÆW'B#¢CÀĞ¢&FWFV7FVB#¢3S’ÀĞ¢&7GVÅög"#¢ãC“3ƒ#scC“3ƒ#sÀĞ¢'&UöWfVçE÷&V6ÆÂ#¢ãC3ƒ33“C3ƒ33“C3ƒ3BÀĞ¢&ÖVå÷Fö¶VåöÆVB#¢ãC#c#ƒ33sC€Ğ¢ÒÀĞ¢°Ğ¢&ÖWF†öB#¢'7WW'f—6VE÷&uö³‚"ÀĞ¢&²#¢çVÆÂÀĞ¢'F&vWEög"#¢ãÀĞ¢&åö6÷'&V7B#¢ƒÀĞ¢&åöVÆ–v–&ÆUöW'&÷"#¢ƒ’ÀĞ¢&fÇ6UöÆW'B#¢sRÀĞ¢&FWFV7FVB#¢SS‚ÀĞ¢&7GVÅög"#¢ã“#S“#S“#S“#S“#S’ÀĞ¢'&UöWfVçE÷&V6ÆÂ#¢ãcƒ3ƒcƒ3ƒcƒ2ÀĞ¢&ÖVå÷Fö¶VåöÆVB#¢ãƒ“cSs3Cscs#S Ğ¢ÒÀĞ¢°Ğ¢&ÖWF†öB#¢'7WW'f—6VE÷&uö³‚"ÀĞ¢&²#¢çVÆÂÀĞ¢'F&vWEög"#¢ã"ÀĞ¢&åö6÷'&V7B#¢ƒÀĞ¢&åöVÆ–v–&ÆUöW'&÷"#¢ƒ’ÀĞ¢&fÇ6UöÆW'B#¢sBÀĞ¢&FWFV7FVB#¢cS‚ÀĞ¢&7GVÅög"#¢ã#CƒCƒCƒCƒCƒ"ÀĞ¢'&UöWfVçE÷&V6ÆÂ#¢ãƒ3Cƒƒ3Cƒƒ3RÀĞ¢&ÖVå÷Fö¶VåöÆVB#¢ã“s#cCC3scƒ““c“`Ğ¢ÒÀĞ¢°Ğ¢&ÖWF†öB#¢'6ö³‚"ÀĞ¢&²#¢çVÆÂÀĞ¢'F&vWEög"#¢ãRÀĞ¢&åö6÷'&V7B#¢ƒÀĞ¢&åöVÆ–v–&ÆUöW'&÷"#¢ƒ’ÀĞ¢&fÇ6UöÆW'B#¢S‚ÀĞ¢&FWFV7FVB#¢3s2ÀĞ¢&7GVÅög"#¢ãscC“3ƒ#scC“BÀĞ¢'&UöWfVçE÷&V6ÆÂ#¢ãCSSC33CSSC33CSSBÀĞ¢&ÖVå÷Fö¶VåöÆVB#¢ãsScs#C#ƒcƒc@Ğ¢ÒÀĞ¢°Ğ¢&ÖWF†öB#¢'6ö³‚"ÀĞ¢&²#¢çVÆÂÀĞ¢'F&vWEög"#¢ãÀĞ¢&åö6÷'&V7B#¢ƒÀĞ¢&åöVÆ–v–&ÆUöW'&÷"#¢ƒ’ÀĞ¢&fÇ6UöÆW'B#¢ƒbÀĞ¢&FWFV7FVB#¢Cs’ÀĞ¢&7GVÅög"#¢ãcs#ƒ3“Scs#ƒBÀĞ¢'&UöWfVçE÷&V6ÆÂ#¢ãSƒCƒS“SƒCƒS“SƒC’ÀĞ¢&ÖVå÷Fö¶VåöÆVB#¢ã“3“CSs##SS#€Ğ¢ÒÀĞ¢°Ğ¢&ÖWF†öB#¢'6ö³‚"ÀĞ¢&²#¢çVÆÂÀĞ¢'F&vWEög"#¢ã"ÀĞ¢&åö6÷'&V7B#¢ƒÀĞ¢&åöVÆ–v–&ÆUöW'&÷"#¢ƒ’ÀĞ¢&fÇ6UöÆW'B#¢#BÀĞ¢&FWFV7FVB#¢c#"ÀĞ¢&7GVÅög"#¢ãS3ƒcC“sS3ƒcC2ÀĞ¢'&UöWfVçE÷&V6ÆÂ#¢ãsS“Cc#sS“Cc#sS“BÀĞ¢&ÖVå÷Fö¶VåöÆVB#¢ã“ƒss3“SC“ƒ3“ Ğ¢ĞĞ¢ĞĞ§
