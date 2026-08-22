@@ -25,9 +25,18 @@ def main() -> None:
     assert interval[0] > 0.0 and interval[0] <= interval[1]
     assert payload["target"]["source_isolation_audit"]["n_overlapping_prior_source_ids"] == 0
     close(payload["t0_collision_control"]["within_question_auroc"], 0.5)
+
+    text_payload = json.loads(
+        (ROOT / "results" / "finetuned_text_cross_encoder.json").read_text(encoding="utf-8")
+    )
+    close(text_payload["result"]["accuracy"], 0.40625)
+    close(
+        payload["results"]["unique_centered_logistic"]["accuracy"]
+        - text_payload["result"]["accuracy"],
+        0.2625,
+    )
     print("frozen headline results verified")
 
 
 if __name__ == "__main__":
     main()
-

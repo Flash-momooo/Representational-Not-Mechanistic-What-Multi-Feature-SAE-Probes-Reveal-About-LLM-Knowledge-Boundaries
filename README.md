@@ -1,9 +1,9 @@
-# Boundary-Aware Internal Hallucination Monitoring
+# When, Where, and How Should Hallucination Risk Be Monitored?
 
 Official code and frozen experimental artifacts for:
 
-> **What Can an Internal Hallucination Monitor Know? Three Boundaries and a
-> Commitment-Evidence Verification Router**
+> **When, Where, and How Should Hallucination Risk Be Monitored? A
+> Three-Property Framework for Internal Readout**
 
 This repository studies what a deterministic monitor can legitimately infer
 from a language model's current hidden state. It separates three nested claims:
@@ -30,11 +30,15 @@ candidate-evidence compatibility becomes readable. This motivates the
 **Commitment-Evidence Verification Router (CEVR)**, which selects among realized
 candidates rather than predicting an unrealized random branch.
 
-In the frozen, source-ID-isolated HotpotQA confirmation, the rank-32 dense CEVR
+In the frozen, document-source-ID-isolated HotpotQA confirmation, the rank-32 dense CEVR
 adapter improves first-sample accuracy from **33.75% to 69.38%**. This is a
 bounded candidate-selection result, not a pre-generation safety guarantee. The
 advantage over the strongest deduplicated-candidate logistic baseline remains
 statistically uncertain, and the SAE router does not add an independent gain.
+On the same candidate pool, a source-tuned 0.5B text cross-encoder reaches
+40.63%, whereas the simpler dense unique-candidate CEVR reaches 66.88%. This
+retrospective fairness audit is limited to the tested verifier scale and does
+not establish superiority over all textual evidence verifiers.
 
 ## Repository scope
 
@@ -106,6 +110,8 @@ archive is attached, regenerate them with the extraction scripts described in
 | Candidate-context compatibility appears after commitment | `scripts/poc_v40_extract_and_evaluate.py` and controls | `results/commitment_*.json` |
 | Frozen CEVR improves over the first sample | `scripts/poc_v45_frozen_cevr_adapter_confirmation.py` | `results/frozen_cevr_confirmation.json` |
 | Nonlinear adapter gain is not just parameter count | `scripts/poc_v46_nonlinear_adapter_attribution.py` | `results/nonlinear_adapter_attribution.json` |
+| Prefix-stage monitoring can trade accuracy for token cost | `scripts/poc_nn36_stage_budget_intervention.py` | `results/stage_budget_intervention.json` |
+| Equal-supervision text-only fairness audit | `scripts/poc_text_only_cevr_baseline.py`, `scripts/poc_frozen_text_cross_encoder.py`, and `scripts/poc_finetuned_text_cross_encoder.py` | `results/*text*cross_encoder.json` and `results/text_only_cevr_baseline.json` |
 
 The exact command lines and required assets are documented in
 [`REPRODUCE.md`](REPRODUCE.md). The internal development labels in original
@@ -143,4 +149,3 @@ before the final data-availability statement is frozen.
 Code in this repository is released under the MIT License. Dataset text, model
 weights, SAE dictionaries, and third-party software retain their original
 licences and are not relicensed by this repository.
-

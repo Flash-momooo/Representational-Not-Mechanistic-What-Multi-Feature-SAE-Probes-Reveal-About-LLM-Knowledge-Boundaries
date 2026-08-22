@@ -71,6 +71,34 @@ python scripts/poc_v45_frozen_cevr_adapter_confirmation.py \
 The frozen method is defined in
 `protocols/V45_FROZEN_CEVR_ADAPTER_CONFIRMATION_PROTOCOL.md`.
 
+### Stage-wise budgeted intervention
+
+```bash
+python scripts/poc_nn36_stage_budget_intervention.py \
+  --output results/stage_budget_intervention.json
+```
+
+This cache-only analysis uses question-grouped outer folds and disjoint
+training, calibration, and evaluation questions. Its frozen scope and
+interpretation are recorded in
+`protocols/NN36_STAGE_BUDGET_INTERVENTION_PROTOCOL.md`.
+
+### Equal-supervision text verifier audit
+
+The three text-only baselines use the same source labels and realized target
+candidate pool as the CEVR comparison:
+
+```bash
+python scripts/poc_text_only_cevr_baseline.py
+python scripts/poc_frozen_text_cross_encoder.py
+python scripts/poc_finetuned_text_cross_encoder.py
+```
+
+The first command is CPU-compatible. The latter two require the locally cached
+`Qwen/Qwen2.5-0.5B-Instruct` checkpoint; end-to-end fine-tuning additionally
+requires a CUDA device. These are retrospective fairness audits, as stated in
+their corresponding protocol files, rather than new prospective confirmations.
+
 ## Level 2: regenerate model states
 
 1. Download the public datasets using the official source or the `datasets`
@@ -90,7 +118,7 @@ reproducibility.
 
 ## Compute
 
-The reference workstation used an NVIDIA GeForce RTX 5080 Laptop GPU. Gemma-2-2B
-experiments fit on a 16 GB GPU in bfloat16. The Qwen2.5-7B experiment uses NF4
-quantization. CPU-only scripts can recompute metrics from released caches.
-
+Experiments were run in a single-GPU environment with an NVIDIA GeForce RTX 5080
+mobile GPU (16 GB VRAM). Gemma-2-2B was evaluated in bfloat16, whereas the
+Qwen2.5-7B experiment used NF4 quantization. CPU-only scripts can recompute
+metrics from the released caches.

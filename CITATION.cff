@@ -1,6 +1,6 @@
 cff-version: 1.2.0
 message: "If you use this code or its experimental artifacts, please cite the accompanying manuscript."
-title: "Boundary-Aware Internal Hallucination Monitoring and CEVR"
+title: "When, Where, and How Should Hallucination Risk Be Monitored?"
 type: software
 version: 1.0.0
 date-released: 2026-08-12
@@ -18,10 +18,9 @@ keywords:
   - candidate verification
 preferred-citation:
   type: article
-  title: "What Can an Internal Hallucination Monitor Know? Three Boundaries and a Commitment-Evidence Verification Router"
+  title: "When, Where, and How Should Hallucination Risk Be Monitored? A Three-Property Framework for Internal Readout"
   authors:
     - family-names: Liu
       given-names: Mengwang
   year: 2026
   notes: "Manuscript under review; DOI not yet assigned."
-

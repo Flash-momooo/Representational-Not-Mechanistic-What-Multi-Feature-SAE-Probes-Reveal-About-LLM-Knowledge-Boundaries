@@ -25,6 +25,17 @@ def main() -> None:
     assert result["results"]["first_sample"]["accuracy"] == 0.3375
     assert result["results"]["frozen_rank32_listwise_adapter"]["accuracy"] == 0.69375
 
+    text_result = json.loads(
+        (ROOT / "results" / "finetuned_text_cross_encoder.json").read_text(encoding="utf-8")
+    )
+    assert text_result["target"]["n_questions"] == 160
+    assert text_result["result"]["accuracy"] == 0.40625
+
+    stage_result = json.loads(
+        (ROOT / "results" / "stage_budget_intervention.json").read_text(encoding="utf-8")
+    )
+    assert stage_result["experiment"] == "NN36 stage-wise budget-constrained intervention"
+
     with (ROOT / "data" / "ARTIFACT_MANIFEST.csv").open(encoding="utf-8", newline="") as handle:
         rows = list(csv.DictReader(handle))
     assert rows
