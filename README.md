@@ -106,8 +106,9 @@ archive is attached, regenerate them with the extraction scripts described in
 |---|---|---|
 | Shared T0 state cannot identify a future branch | `scripts/poc_v43_t0_target_separation.py` | `results/t0_target_separation_*.json` |
 | Readoutability is conditional | `scripts/poc_nn1_sparse_compression_controls.py` | `results/quantitative_readout_*.json` |
-| Sparse supports need not be identifiable | `scripts/poc_nn12_information_regime_transport.py` | `results/support_transport_*.json` |
+| Audits do not identify a unique stable sparse support | `scripts/poc_nn12_information_regime_transport.py` | `results/support_transport_*.json` |
 | Candidate-context compatibility appears after commitment | `scripts/poc_v40_extract_and_evaluate.py` and controls | `results/commitment_*.json` |
+| V41 and V45 HotpotQA blocks are source-isolated | `scripts/audit_hotpot_v41_v45_independence.py` | `results/hotpot_v41_v45_independence_audit.json` |
 | Frozen CEVR improves over the first sample | `scripts/poc_v45_frozen_cevr_adapter_confirmation.py` | `results/frozen_cevr_confirmation.json` |
 | Nonlinear adapter gain is not just parameter count | `scripts/poc_v46_nonlinear_adapter_attribution.py` | `results/nonlinear_adapter_attribution.json` |
 | Prefix-stage monitoring can trade accuracy for token cost | `scripts/poc_nn36_stage_budget_intervention.py` | `results/stage_budget_intervention.json` |
@@ -132,6 +133,9 @@ python scripts/verify_frozen_results.py
 
 - Training, selection, and evaluation partitions are grouped by question.
 - Confirmatory protocols are stored in `protocols/` with freeze dates.
+- The V41 commitment replication and V45 confirmation share zero question IDs
+  and zero primary or distractor document-source IDs; both source manifests and
+  the machine-readable audit are included.
 - Results are reported even when the tested method does not improve.
 - The 7B experiment uses an NF4 checkpoint and a locally trained SAE; it is not
   presented as a second public-SAE replication.
@@ -149,3 +153,4 @@ before the final data-availability statement is frozen.
 Code in this repository is released under the MIT License. Dataset text, model
 weights, SAE dictionaries, and third-party software retain their original
 licences and are not relicensed by this repository.
+
