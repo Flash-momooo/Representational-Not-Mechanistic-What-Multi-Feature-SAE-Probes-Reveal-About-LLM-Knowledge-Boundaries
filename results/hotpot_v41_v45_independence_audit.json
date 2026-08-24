@@ -1,0 +1,27 @@
+{
+  "audit": "V41-V45 HotpotQA independence",
+  "inputs": {
+    "v41_manifest": "data/manifests/hotpot_v41_source_ids.csv",
+    "v45_manifest": "data/manifests/hotpot_v45_source_ids.csv",
+    "v41_jsonl_sha256": "e38628e7072dc44bf5b4b45dc84b448618fba6f070efe4633327999d84eb16f4",
+    "v45_jsonl_sha256": "9288c6c157cd2a377bf4646c49ab111e964413d168b1d1e8855d6e7550aa8aaa"
+  },
+  "counts": {
+    "v41_questions": 160,
+    "v45_questions": 160,
+    "v41_unique_question_ids": 160,
+    "v45_unique_question_ids": 160,
+    "question_id_overlap": 0,
+    "normalized_question_text_overlap": 0,
+    "v41_unique_source_ids": 616,
+    "v45_unique_source_ids": 640,
+    "source_id_overlap": 0
+  },
+  "local_audit_trail": {
+    "v41_protocol_created": "2026-07-14T19:24:38+08:00",
+    "v41_earliest_label_bearing_derived_artifact": "2026-07-14T19:25:01+08:00",
+    "v45_protocol_created": "2026-08-08T10:42:54+08:00",
+    "v45_earliest_label_bearing_derived_artifact": "2026-08-08T10:44:21+08:00",
+    "caveat": "Local file creation times are provenance markers, not proof of first human label inspection."
+  }
+}
