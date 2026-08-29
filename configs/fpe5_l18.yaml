@@ -1,0 +1,9 @@
+model:
+  name: "google/gemma-2-2b"
+  dtype: "bfloat16"
+  device: "cuda"
+  local_files_only: true
+sae:
+  release: "gemma-scope-2b-pt-res-canonical"
+  layers: [18]
+  width: "16k"

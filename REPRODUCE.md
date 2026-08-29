@@ -99,6 +99,36 @@ The first command is CPU-compatible. The latter two require the locally cached
 requires a CUDA device. These are retrospective fairness audits, as stated in
 their corresponding protocol files, rather than new prospective confirmations.
 
+### Framework-extension artifacts (V48--V55)
+
+The current workshop claims are backed by the frozen records below. They use
+large caches and generated third-party-derived trajectories that are not
+committed to Git; verify their checksums in `data/ARTIFACT_MANIFEST.csv` before
+rerunning an analysis.
+
+```bash
+# 500-question candidate-conditioned confirmation
+python scripts/poc_v48_scale_candidate_readout.py \
+  --source-cache artifacts/cache/equal_compute_source.npz \
+  --cache artifacts/cache/v48_hotpot_scale_candidate_readout.npz \
+  --items artifacts/data/v47_hotpot_scale_confirmation_candidates.jsonl \
+  --output reproduced/poc_v48_hotpot_scale_candidate_readout.json
+
+# Candidate-conditioned SAE geometry and same-state interface controls
+python scripts/poc_v53_candidate_conditioned_subspace_audit.py
+python scripts/poc_v54_unified_interface_comparison.py
+
+# Genuine eight-sample semantic-uncertainty / consistency audit
+python scripts/poc_v55_multisample_semantic_baselines.py \
+  --output reproduced/poc_v55_multisample_semantic_baselines.json
+```
+
+`poc_v49_*` is a post-hoc audit of the already inspected V48 target, and V53--V55
+are diagnostic audits with the status stated in
+`protocols/V48_V55_FRAMEWORK_EXTENSION_PROTOCOL.md`. V52 is a separate
+larger-scale geometric validation. These distinctions are deliberate: the
+repository does not relabel a diagnostic as a prospective confirmation.
+
 ## Level 2: regenerate model states
 
 1. Download the public datasets using the official source or the `datasets`

@@ -1,14 +1,10 @@
 cff-version: 1.2.0
-message: "If you use this code or its experimental artifacts, please cite the accompanying manuscript."
+message: "Anonymous code release for peer review. Citation metadata will be completed after review."
 title: "When, Where, and How Should Hallucination Risk Be Monitored?"
 type: software
 version: 1.0.0
 date-released: 2026-08-12
-authors:
-  - family-names: Liu
-    given-names: Mengwang
-    affiliation: Shandong University of Finance and Economics
-repository-code: "https://github.com/Flash-momooo/Representational-Not-Mechanistic-What-Multi-Feature-SAE-Probes-Reveal-About-LLM-Knowledge-Boundaries"
+repository-code: "https://anonymous.4open.science/r/llm-monitor-boundary-7c9e24a1411e3/"
 license: MIT
 keywords:
   - hallucination monitoring
@@ -19,8 +15,5 @@ keywords:
 preferred-citation:
   type: article
   title: "When, Where, and How Should Hallucination Risk Be Monitored? A Three-Property Framework for Internal Readout"
-  authors:
-    - family-names: Liu
-      given-names: Mengwang
   year: 2026
-  notes: "Manuscript under review; DOI not yet assigned."
+  notes: "Anonymous manuscript under review; DOI not yet assigned."

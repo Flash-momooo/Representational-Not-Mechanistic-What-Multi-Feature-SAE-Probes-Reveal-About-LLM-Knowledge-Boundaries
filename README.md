@@ -23,22 +23,21 @@ causal "hallucination neuron."
 ## Main result
 
 Exact prefix collisions impose an information boundary: continuations that
-share the same question and prefix have the same deterministic state, so a
-state-only monitor cannot rank their still-unrealized outcomes. Once a candidate
-answer is committed and appended to the same question and evidence, its
-candidate-evidence compatibility becomes readable. This motivates the
-**Commitment-Evidence Verification Router (CEVR)**, which selects among realized
-candidates rather than predicting an unrealized random branch.
+share an identical observed state must receive the same score from a
+deterministic state-only monitor. This rules out within-question ranking of an
+unrealized future branch at that state. Once a realised candidate is appended to
+the same question and evidence, candidate--evidence compatibility can become
+readable; this does not imply a pre-generation warning signal or a causal
+``hallucination feature.''
 
-In the frozen, document-source-ID-isolated HotpotQA confirmation, the rank-32 dense CEVR
-adapter improves first-sample accuracy from **33.75% to 69.38%**. This is a
-bounded candidate-selection result, not a pre-generation safety guarantee. The
-advantage over the strongest deduplicated-candidate logistic baseline remains
-statistically uncertain, and the SAE router does not add an independent gain.
-On the same candidate pool, a source-tuned 0.5B text cross-encoder reaches
-40.63%, whereas the simpler dense unique-candidate CEVR reaches 66.88%. This
-retrospective fairness audit is limited to the tested verifier scale and does
-not establish superiority over all textual evidence verifiers.
+The current frozen scale confirmation uses 500 source-ID-isolated HotpotQA
+questions and four supplied candidates per question. A dense, source-fitted
+Gemma-2-2B layer-18 readout attains within-question AUROC **0.939** and
+candidate-selection accuracy **0.858**. PCA retains most of this result (AUROC
+0.920), whereas a Top-32 SAE interface attains 0.780. These are conditional
+interface comparisons on one realised-candidate setting, not a universal method
+ranking. The older 160-question CEVR construction result remains available as a
+separate historical artifact; it is not substituted for the scale confirmation.
 
 ## Repository scope
 
@@ -113,6 +112,12 @@ archive is attached, regenerate them with the extraction scripts described in
 | Nonlinear adapter gain is not just parameter count | `scripts/poc_v46_nonlinear_adapter_attribution.py` | `results/nonlinear_adapter_attribution.json` |
 | Prefix-stage monitoring can trade accuracy for token cost | `scripts/poc_nn36_stage_budget_intervention.py` | `results/stage_budget_intervention.json` |
 | Equal-supervision text-only fairness audit | `scripts/poc_text_only_cevr_baseline.py`, `scripts/poc_frozen_text_cross_encoder.py`, and `scripts/poc_finetuned_text_cross_encoder.py` | `results/*text*cross_encoder.json` and `results/text_only_cevr_baseline.json` |
+| 500-question candidate-conditioned scale confirmation | `scripts/poc_v48_scale_candidate_readout.py` | `results/poc_v48_hotpot_scale_candidate_readout.json` |
+| Strong task-aligned verifier audit | `scripts/poc_v49_strong_candidate_verifier_audit.py` and `scripts/poc_v49_aggregate_strong_baselines.py` | `results/poc_v49_*candidate_verifier*.json` |
+| Geometric readout at larger scale | `scripts/poc_v52_geometric_scale_validation.py` | `results/poc_v52_geometric_scale_validation.json` |
+| Candidate-conditioned SAE subspace audit | `scripts/poc_v53_candidate_conditioned_subspace_audit.py` and `scripts/audit_v53_sae_cache_equivalence.py` | `results/poc_v53_*.json` |
+| Same-state internal-interface comparison | `scripts/poc_v54_unified_interface_comparison.py` | `results/poc_v54_unified_interface_comparison.json` |
+| Genuine multi-sample output-only audit | `scripts/poc_v55_multisample_semantic_baselines.py` | `results/poc_v55_multisample_semantic_baselines.json` and `results/poc_v56_strong_semantic_baselines.json` |
 
 The exact command lines and required assets are documented in
 [`REPRODUCE.md`](REPRODUCE.md). The internal development labels in original
@@ -153,4 +158,3 @@ before the final data-availability statement is frozen.
 Code in this repository is released under the MIT License. Dataset text, model
 weights, SAE dictionaries, and third-party software retain their original
 licences and are not relicensed by this repository.
-

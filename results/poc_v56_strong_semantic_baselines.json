@@ -1,0 +1,81 @@
+{
+  "experiment": "V55 real-trajectory semantic entropy and SelfCheck-style audit",
+  "frozen_scope": {
+    "trajectory_file": "data\\fpe5c3b_gemma2_it_hotpot_trajectory.jsonl",
+    "questions": 80,
+    "samples_per_question": 8,
+    "completions": 640,
+    "judge": "Qwen/Qwen2.5-7B-Instruct",
+    "judge_mode": "local deterministic Yes/No pairwise semantic equivalence",
+    "pair_prompts": 300,
+    "target_note": "gold labels are evaluation-only"
+  },
+  "semantic_cluster_rule": "union pair scores >= 0.5; entropy over component mass",
+  "question_level_first_sample_error_auroc": {
+    "semantic_entropy": 0.5808270676691729,
+    "lexical_agreement_entropy_control": 0.6672932330827068
+  },
+  "branch_level_macro_within_question_auroc": {
+    "selfcheck_style_semantic_disagreement": 0.7287946428571428,
+    "semantic_entropy_question_score": 0.5,
+    "lexical_entropy_question_score": 0.5
+  },
+  "selection_bootstrap": {
+    "first_correct": {
+      "estimate": 0.475,
+      "ci95": [
+        0.3625,
+        0.5875
+      ]
+    },
+    "lexical_mode_correct": {
+      "estimate": 0.5,
+      "ci95": [
+        0.3875,
+        0.6125
+      ]
+    },
+    "semantic_mode_correct": {
+      "estimate": 0.5,
+      "ci95": [
+        0.3875,
+        0.6125
+      ]
+    },
+    "selfcheck_correct": {
+      "estimate": 0.5,
+      "ci95": [
+        0.3875,
+        0.6125
+      ]
+    },
+    "oracle_correct": {
+      "estimate": 0.525,
+      "ci95": [
+        0.4125,
+        0.6375
+      ]
+    },
+    "semantic_minus_first": {
+      "estimate": 0.025,
+      "ci95": [
+        0.0,
+        0.0625
+      ]
+    },
+    "selfcheck_minus_first": {
+      "estimate": 0.025,
+      "ci95": [
+        0.0,
+        0.0625
+      ]
+    }
+  },
+  "mean_semantic_entropy": 0.0859727708648422,
+  "mean_lexical_entropy": 0.19683416625364797,
+  "interpretation_limits": [
+    "Semantic entropy is a canonical-equality-anchored, Qwen-judged clustering approximation, not a verbatim reproduction of every Semantic Entropy implementation.",
+    "SelfCheck-style disagreement is inspired by SelfCheckGPT but uses a frozen local equivalence judge, not its original evaluator suite.",
+    "This is retrospective on an existing 80-question trajectory collection and has additional pairwise judge cost."
+  ]
+}
