@@ -1,0 +1,316 @@
+{
+  "experiment": "V51 grouped-subsample SAE subspace-identifiability audit",
+  "status": "completed",
+  "scope": "Fixed Qwen2.5-7B-Instruct true Top-K SAE and WebQuestions trajectory cache; this is not a cross-model result.",
+  "pre_specified_interpretation": "A stable-subspace finding requires decoder-span overlap and signed decoder-direction agreement above equal-K random supports while preserving heldout discrimination. Coordinate Jaccard alone is insufficient.",
+  "data_split": {
+    "seed": 20260828,
+    "n_questions": 600,
+    "development_questions": 480,
+    "heldout_questions": 120,
+    "development_subsample_fraction": 0.6,
+    "n_grouped_subsamples": 12,
+    "heldout_question_ids_saved_in": "outputs\\cache\\poc_v51_subspace_identifiability_artifacts.npz"
+  },
+  "representation": {
+    "dictionary": "outputs\\nn32_qwen7b_l18_topk_sae.pt",
+    "decoder_shape": [
+      7168,
+      3584
+    ],
+    "stages": [
+      1,
+      2,
+      3
+    ],
+    "k_values": [
+      8
+    ],
+    "random_reference": "same-K features sampled from features active in at least 1% of development rows"
+  },
+  "results": {
+    "T1_K8": {
+      "stage": 1,
+      "k": 8,
+      "heldout_rows": 504,
+      "heldout_event_rate": 0.5892857142857143,
+      "selected_support_jaccard": {
+        "mean": 0.3765063219608674,
+        "median": 0.3333333333333333,
+        "min": 0.23076923076923078,
+        "max": 0.6,
+        "n": 66
+      },
+      "random_support_jaccard": {
+        "mean": 0.13543123543123542,
+        "median": 0.14285714285714285,
+        "min": 0.0,
+        "max": 0.3333333333333333,
+        "n": 66
+      },
+      "selected_decoder_span_overlap": {
+        "mean": 0.5406176235639688,
+        "median": 0.5049237012863159,
+        "min": 0.37635907530784607,
+        "max": 0.7522495985031128,
+        "n": 66
+      },
+      "random_decoder_span_overlap": {
+        "mean": 0.23582223238367023,
+        "median": 0.2574220299720764,
+        "min": 0.009881023317575455,
+        "max": 0.5081431865692139,
+        "n": 66
+      },
+      "span_overlap_advantage": 0.3047953911802986,
+      "selected_decoder_direction_cosine": {
+        "mean": 0.5233340739752307,
+        "median": 0.5307916402816772,
+        "min": 0.23644430935382843,
+        "max": 0.87032151222229,
+        "n": 66
+      },
+      "random_decoder_direction_cosine": {
+        "mean": 0.1471430210442508,
+        "median": 0.090935118496418,
+        "min": -0.129481703042984,
+        "max": 0.7284123301506042,
+        "n": 66
+      },
+      "direction_cosine_advantage": 0.3761910529309799,
+      "selected_heldout_auc": {
+        "mean": 0.5718199168279683,
+        "median": 0.5658517542575514,
+        "min": 0.5317750776687975,
+        "max": 0.637323313651816,
+        "n": 12
+      },
+      "random_heldout_auc": {
+        "mean": 0.5965627829556975,
+        "median": 0.5894045121098261,
+        "min": 0.5037655134273491,
+        "max": 0.7038663608711918,
+        "n": 12
+      },
+      "heldout_auc_advantage": -0.024742866127729246,
+      "selected_SAE_only_heldout_auc": {
+        "mean": 0.5284351838297088,
+        "median": 0.5407049561638935,
+        "min": 0.44146781827941245,
+        "max": 0.5815644366369004,
+        "n": 12
+      },
+      "random_SAE_only_heldout_auc": {
+        "mean": 0.5461729479442844,
+        "median": 0.5517168464028368,
+        "min": 0.3992908147497519,
+        "max": 0.6521251158932317,
+        "n": 12
+      },
+      "SAE_only_heldout_auc_advantage": -0.017737764114575616,
+      "selected_probability_spearman": {
+        "mean": 0.8448397105370434,
+        "median": 0.8398337966214151,
+        "min": 0.6753229871625472,
+        "max": 0.9666995098923206,
+        "n": 66
+      },
+      "random_probability_spearman": {
+        "mean": 0.696506355619221,
+        "median": 0.7021924927408252,
+        "min": 0.4915801166652502,
+        "max": 0.93688147361283,
+        "n": 66
+      }
+    },
+    "T2_K8": {
+      "stage": 2,
+      "k": 8,
+      "heldout_rows": 380,
+      "heldout_event_rate": 0.49736842105263157,
+      "selected_support_jaccard": {
+        "mean": 0.19163563709018253,
+        "median": 0.18681318681318682,
+        "min": 0.0,
+        "max": 0.45454545454545453,
+        "n": 66
+      },
+      "random_support_jaccard": {
+        "mean": 0.12010212010212008,
+        "median": 0.14285714285714285,
+        "min": 0.0,
+        "max": 0.3333333333333333,
+        "n": 66
+      },
+      "selected_decoder_span_overlap": {
+        "mean": 0.32317534653526364,
+        "median": 0.3236802667379379,
+        "min": 0.02087301015853882,
+        "max": 0.6269301176071167,
+        "n": 66
+      },
+      "random_decoder_span_overlap": {
+        "mean": 0.21821440016907273,
+        "median": 0.2554866820573807,
+        "min": 0.015828551724553108,
+        "max": 0.5069441795349121,
+        "n": 66
+      },
+      "span_overlap_advantage": 0.10496094636619091,
+      "selected_decoder_direction_cosine": {
+        "mean": 0.2110196869594581,
+        "median": 0.20091979950666428,
+        "min": -0.03472078591585159,
+        "max": 0.5671359300613403,
+        "n": 66
+      },
+      "random_decoder_direction_cosine": {
+        "mean": 0.11162496826022328,
+        "median": 0.052564140409231186,
+        "min": -0.25098904967308044,
+        "max": 0.5486075282096863,
+        "n": 66
+      },
+      "direction_cosine_advantage": 0.09939471869923483,
+      "selected_heldout_auc": {
+        "mean": 0.5715301439559729,
+        "median": 0.5660821629408017,
+        "min": 0.54180171195878,
+        "max": 0.620141832183717,
+        "n": 12
+      },
+      "random_heldout_auc": {
+        "mean": 0.5603825590736585,
+        "median": 0.5535471896728441,
+        "min": 0.4971467353666307,
+        "max": 0.626624006205158,
+        "n": 12
+      },
+      "heldout_auc_advantage": 0.011147584882314376,
+      "selected_SAE_only_heldout_auc": {
+        "mean": 0.5460677581096429,
+        "median": 0.5534917864760796,
+        "min": 0.4755117870301116,
+        "max": 0.6203080417740103,
+        "n": 12
+      },
+      "random_SAE_only_heldout_auc": {
+        "mean": 0.5432352696750603,
+        "median": 0.5469542092578742,
+        "min": 0.4558436521787307,
+        "max": 0.6410011357655337,
+        "n": 12
+      },
+      "SAE_only_heldout_auc_advantage": 0.002832488434582614,
+      "selected_probability_spearman": {
+        "mean": 0.43327608008845925,
+        "median": 0.4797064293884772,
+        "min": -0.23735479726228578,
+        "max": 0.7851754804613146,
+        "n": 66
+      },
+      "random_probability_spearman": {
+        "mean": 0.47911157519825925,
+        "median": 0.5188881561121474,
+        "min": 0.026231523442845472,
+        "max": 0.8185663262554682,
+        "n": 66
+      }
+    },
+    "T3_K8": {
+      "stage": 3,
+      "k": 8,
+      "heldout_rows": 191,
+      "heldout_event_rate": 0.39267015706806285,
+      "selected_support_jaccard": {
+        "mean": 0.18023491659855292,
+        "median": 0.14285714285714285,
+        "min": 0.0,
+        "max": 0.45454545454545453,
+        "n": 66
+      },
+      "random_support_jaccard": {
+        "mean": 0.14063108608563152,
+        "median": 0.14285714285714285,
+        "min": 0.0,
+        "max": 0.45454545454545453,
+        "n": 66
+      },
+      "selected_decoder_span_overlap": {
+        "mean": 0.2982110633289046,
+        "median": 0.26926031708717346,
+        "min": 0.010197563096880913,
+        "max": 0.627500593662262,
+        "n": 66
+      },
+      "random_decoder_span_overlap": {
+        "mean": 0.24728443812240253,
+        "median": 0.25756582617759705,
+        "min": 0.013741210103034973,
+        "max": 0.6262017488479614,
+        "n": 66
+      },
+      "span_overlap_advantage": 0.050926625206502096,
+      "selected_decoder_direction_cosine": {
+        "mean": 0.3104216384165215,
+        "median": 0.3287707567214966,
+        "min": -0.01876627840101719,
+        "max": 0.7638442516326904,
+        "n": 66
+      },
+      "random_decoder_direction_cosine": {
+        "mean": 0.11035952093361905,
+        "median": 0.038805730640888214,
+        "min": -0.139190211892128,
+        "max": 0.6693570017814636,
+        "n": 66
+      },
+      "direction_cosine_advantage": 0.20006211748290242,
+      "selected_heldout_auc": {
+        "mean": 0.598735632183908,
+        "median": 0.562528735632184,
+        "min": 0.5332758620689655,
+        "max": 0.7108620689655172,
+        "n": 12
+      },
+      "random_heldout_auc": {
+        "mean": 0.5983141762452108,
+        "median": 0.5930459770114943,
+        "min": 0.5032758620689655,
+        "max": 0.6737356321839081,
+        "n": 12
+      },
+      "heldout_auc_advantage": 0.00042145593869724607,
+      "selected_SAE_only_heldout_auc": {
+        "mean": 0.5009482758620689,
+        "median": 0.5035632183908045,
+        "min": 0.47293103448275864,
+        "max": 0.5332758620689655,
+        "n": 12
+      },
+      "random_SAE_only_heldout_auc": {
+        "mean": 0.5050766283524905,
+        "median": 0.49540229885057474,
+        "min": 0.4466091954022988,
+        "max": 0.5750000000000001,
+        "n": 12
+      },
+      "SAE_only_heldout_auc_advantage": -0.0041283524904215385,
+      "selected_probability_spearman": {
+        "mean": 0.5355653896506706,
+        "median": 0.5636804696783895,
+        "min": 0.059770507467217196,
+        "max": 0.909525854560444,
+        "n": 66
+      },
+      "random_probability_spearman": {
+        "mean": 0.4845782510645109,
+        "median": 0.45384623344906266,
+        "min": 0.02977573339818317,
+        "max": 0.8728925959079062,
+        "n": 66
+      }
+    }
+  },
+  "limitations": "Decoder-span agreement is representational geometry, not a causal circuit test. The fixed heldout is used repeatedly for reporting across resamples and should be treated as an audit set, not a new prospective dataset."
+}

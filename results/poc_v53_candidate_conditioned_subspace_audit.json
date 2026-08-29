@@ -1,0 +1,522 @@
+{
+  "experiment": "V53 candidate-conditioned SAE subspace audit",
+  "status": "completed",
+  "protocol": "paper/V53_CANDIDATE_CONDITIONED_SUBSPACE_AUDIT_PROTOCOL.md",
+  "scope": "Post-hoc diagnostic audit on the V47/V48 target; target states are never used in support selection.",
+  "source": {
+    "questions": 160,
+    "candidate_states": 640,
+    "subsample_fraction": 0.6,
+    "n_grouped_subsamples": 12
+  },
+  "target": {
+    "questions": 500,
+    "candidate_states": 2000,
+    "candidates_per_question": 4,
+    "source_id_isolated_at_V47_construction": true
+  },
+  "representation": {
+    "sae": "GemmaScope layer-18 width-16k",
+    "decoder_shape": [
+      16384,
+      2304
+    ],
+    "question_centered": true,
+    "k_values": [
+      8,
+      32
+    ]
+  },
+  "pre_specified_interpretation": "Stable usable geometry requires selected supports to exceed active-random controls on decoder geometry, target score agreement, and target candidate discrimination. Low Jaccard alone is not a mechanism claim.",
+  "results": {
+    "K8": {
+      "selected_support": {
+        "feature_jaccard": {
+          "mean": 0.32995085722358447,
+          "median": 0.3333333333333333,
+          "min": 0.14285714285714285,
+          "max": 0.6,
+          "n": 66
+        },
+        "decoder_span_overlap": {
+          "mean": 0.4889432237003789,
+          "median": 0.5011586844921112,
+          "min": 0.2512153387069702,
+          "max": 0.7501868605613708,
+          "n": 66
+        },
+        "residual_direction_cosine": {
+          "mean": 0.5725968872958963,
+          "median": 0.587633490562439,
+          "min": 0.33607956767082214,
+          "max": 0.8081952333450317,
+          "n": 66
+        },
+        "target_score_spearman": {
+          "mean": 0.5732115222592866,
+          "median": 0.5813568415268415,
+          "min": 0.23130098482524622,
+          "max": 0.8656130264778615,
+          "n": 66
+        },
+        "target_within_question_auroc": {
+          "mean": 0.7372777777777778,
+          "median": 0.733,
+          "min": 0.6813333333333332,
+          "max": 0.8073333333333332,
+          "n": 12
+        },
+        "target_selection_accuracy": {
+          "mean": 0.5186666666666667,
+          "median": 0.531,
+          "min": 0.436,
+          "max": 0.632,
+          "n": 12
+        }
+      },
+      "active_random_control": {
+        "feature_jaccard": {
+          "mean": 0.016161616161616165,
+          "median": 0.0,
+          "min": 0.0,
+          "max": 0.06666666666666667,
+          "n": 66
+        },
+        "decoder_span_overlap": {
+          "mean": 0.0415962825345835,
+          "median": 0.011830312199890614,
+          "min": 0.002469956409186125,
+          "max": 0.14766255021095276,
+          "n": 66
+        },
+        "residual_direction_cosine": {
+          "mean": 0.03288672042077506,
+          "median": 0.010001411195844412,
+          "min": -0.057578910142183304,
+          "max": 0.458924263715744,
+          "n": 66
+        },
+        "target_score_spearman": {
+          "mean": 0.106352590860918,
+          "median": 0.09041121318356143,
+          "min": -0.2994281617611099,
+          "max": 0.5429363695802031,
+          "n": 66
+        },
+        "target_within_question_auroc": {
+          "mean": 0.5981388888888889,
+          "median": 0.5953333333333333,
+          "min": 0.506,
+          "max": 0.716,
+          "n": 12
+        },
+        "target_selection_accuracy": {
+          "mean": 0.3313333333333333,
+          "median": 0.307,
+          "min": 0.24,
+          "max": 0.48,
+          "n": 12
+        }
+      },
+      "within_question_label_permutation_control": {
+        "feature_jaccard": {
+          "mean": 0.00909090909090909,
+          "median": 0.0,
+          "min": 0.0,
+          "max": 0.06666666666666667,
+          "n": 66
+        },
+        "decoder_span_overlap": {
+          "mean": 0.024291182801155657,
+          "median": 0.007142850663512945,
+          "min": 0.002474344801157713,
+          "max": 0.13606633245944977,
+          "n": 66
+        },
+        "residual_direction_cosine": {
+          "mean": 0.016879102119040028,
+          "median": 0.0072596208192408085,
+          "min": -0.11940785497426987,
+          "max": 0.19117937982082367,
+          "n": 66
+        },
+        "target_score_spearman": {
+          "mean": -0.008770853898733411,
+          "median": 0.007525480742035333,
+          "min": -0.4370707103377233,
+          "max": 0.5949018734169866,
+          "n": 66
+        },
+        "target_within_question_auroc": {
+          "mean": 0.5035555555555555,
+          "median": 0.5063333333333333,
+          "min": 0.43066666666666664,
+          "max": 0.62,
+          "n": 12
+        },
+        "target_selection_accuracy": {
+          "mean": 0.24216666666666667,
+          "median": 0.237,
+          "min": 0.138,
+          "max": 0.362,
+          "n": 12
+        }
+      },
+      "selected_minus_random": {
+        "decoder_span_overlap": 0.44734694116579543,
+        "residual_direction_cosine": 0.5397101668751212,
+        "target_score_spearman": 0.46685893139836865,
+        "target_within_question_auroc": 0.13913888888888892,
+        "target_selection_accuracy": 0.1873333333333334
+      }
+    },
+    "K32": {
+      "selected_support": {
+        "feature_jaccard": {
+          "mean": 0.3427466506434683,
+          "median": 0.3333333333333333,
+          "min": 0.20754716981132076,
+          "max": 0.45454545454545453,
+          "n": 66
+        },
+        "decoder_span_overlap": {
+          "mean": 0.5230214202945883,
+          "median": 0.5355811417102814,
+          "min": 0.38526731729507446,
+          "max": 0.6328216195106506,
+          "n": 66
+        },
+        "residual_direction_cosine": {
+          "mean": 0.6369837084502885,
+          "median": 0.6401501595973969,
+          "min": 0.46513479948043823,
+          "max": 0.7718600630760193,
+          "n": 66
+        },
+        "target_score_spearman": {
+          "mean": 0.7015680200620013,
+          "median": 0.7244546108754134,
+          "min": 0.48227802206950543,
+          "max": 0.9054729433682358,
+          "n": 66
+        },
+        "target_within_question_auroc": {
+          "mean": 0.7666111111111111,
+          "median": 0.7719999999999999,
+          "min": 0.664,
+          "max": 0.818,
+          "n": 12
+        },
+        "target_selection_accuracy": {
+          "mean": 0.5519999999999999,
+          "median": 0.563,
+          "min": 0.384,
+          "max": 0.624,
+          "n": 12
+        }
+      },
+      "active_random_control": {
+        "feature_jaccard": {
+          "mean": 0.05185084080308709,
+          "median": 0.04918032786885246,
+          "min": 0.0,
+          "max": 0.16363636363636364,
+          "n": 66
+        },
+        "decoder_span_overlap": {
+          "mean": 0.13391134789157094,
+          "median": 0.11974203586578369,
+          "min": 0.029521385207772255,
+          "max": 0.29981642961502075,
+          "n": 66
+        },
+        "residual_direction_cosine": {
+          "mean": 0.08875763589149398,
+          "median": 0.07782883197069168,
+          "min": -0.035814959555864334,
+          "max": 0.39696720242500305,
+          "n": 66
+        },
+        "target_score_spearman": {
+          "mean": 0.20852469672208326,
+          "median": 0.20644872361218092,
+          "min": -0.05806762151690537,
+          "max": 0.4792779088194772,
+          "n": 66
+        },
+        "target_within_question_auroc": {
+          "mean": 0.6435000000000001,
+          "median": 0.6386666666666667,
+          "min": 0.538,
+          "max": 0.7766666666666667,
+          "n": 12
+        },
+        "target_selection_accuracy": {
+          "mean": 0.40216666666666673,
+          "median": 0.413,
+          "min": 0.284,
+          "max": 0.57,
+          "n": 12
+        }
+      },
+      "within_question_label_permutation_control": {
+        "feature_jaccard": {
+          "mean": 0.03060470485113531,
+          "median": 0.03225806451612903,
+          "min": 0.0,
+          "max": 0.06666666666666667,
+          "n": 66
+        },
+        "decoder_span_overlap": {
+          "mean": 0.08861544214640603,
+          "median": 0.08508725464344025,
+          "min": 0.019271697849035263,
+          "max": 0.17335283756256104,
+          "n": 66
+        },
+        "residual_direction_cosine": {
+          "mean": 0.03483680212362246,
+          "median": 0.03499026037752628,
+          "min": -0.10777174681425095,
+          "max": 0.16476872563362122,
+          "n": 66
+        },
+        "target_score_spearman": {
+          "mean": 0.004423639210374195,
+          "median": -0.010826406872200742,
+          "min": -0.45338518884629725,
+          "max": 0.44956791185667716,
+          "n": 66
+        },
+        "target_within_question_auroc": {
+          "mean": 0.48847222222222225,
+          "median": 0.4963333333333334,
+          "min": 0.402,
+          "max": 0.6006666666666667,
+          "n": 12
+        },
+        "target_selection_accuracy": {
+          "mean": 0.23233333333333336,
+          "median": 0.22999999999999998,
+          "min": 0.15,
+          "max": 0.34,
+          "n": 12
+        }
+      },
+      "selected_minus_random": {
+        "decoder_span_overlap": 0.38911007240301737,
+        "residual_direction_cosine": 0.5482260725587945,
+        "target_score_spearman": 0.49304332333991796,
+        "target_within_question_auroc": 0.12311111111111106,
+        "target_selection_accuracy": 0.1498333333333332
+      }
+    }
+  },
+  "single_source_fit_target_bootstrap": {
+    "K8": {
+      "source_only_selected_support": [
+        964,
+        4651,
+        5358,
+        6831,
+        7373,
+        8656,
+        10108,
+        16321
+      ],
+      "source_only_random_support": [
+        1016,
+        5540,
+        5777,
+        7267,
+        9485,
+        12663,
+        13585,
+        14515
+      ],
+      "selected": {
+        "within_question_auroc": {
+          "mean": 0.724,
+          "ci95": [
+            0.6953333333333332,
+            0.7526666666666667
+          ],
+          "n_questions": 500
+        },
+        "selection_accuracy": {
+          "mean": 0.496,
+          "ci95": [
+            0.452,
+            0.54
+          ],
+          "n_questions": 500
+        }
+      },
+      "active_random_control": {
+        "within_question_auroc": {
+          "mean": 0.6366666666666667,
+          "ci95": [
+            0.6053333333333334,
+            0.6666666666666666
+          ],
+          "n_questions": 500
+        },
+        "selection_accuracy": {
+          "mean": 0.38,
+          "ci95": [
+            0.338,
+            0.424
+          ],
+          "n_questions": 500
+        }
+      },
+      "paired_selected_minus_random": {
+        "within_question_auroc": {
+          "mean": 0.08733333333333335,
+          "ci95": [
+            0.048,
+            0.12666666666666668
+          ],
+          "n_questions": 500
+        },
+        "selection_accuracy": {
+          "mean": 0.116,
+          "ci95": [
+            0.058,
+            0.174
+          ],
+          "n_questions": 500
+        }
+      }
+    },
+    "K32": {
+      "source_only_selected_support": [
+        9,
+        700,
+        745,
+        964,
+        1839,
+        2144,
+        3639,
+        4218,
+        4632,
+        4651,
+        4845,
+        5358,
+        5414,
+        5678,
+        6567,
+        6712,
+        6830,
+        6831,
+        7373,
+        7722,
+        8412,
+        8656,
+        9432,
+        10108,
+        10364,
+        10731,
+        11464,
+        11680,
+        12306,
+        15013,
+        15041,
+        16321
+      ],
+      "source_only_random_support": [
+        46,
+        700,
+        2030,
+        2144,
+        3519,
+        3523,
+        3634,
+        4505,
+        4632,
+        5499,
+        5728,
+        5943,
+        7324,
+        7847,
+        8123,
+        8580,
+        8768,
+        8917,
+        9432,
+        10059,
+        10637,
+        11429,
+        11619,
+        12116,
+        12386,
+        12490,
+        12991,
+        13319,
+        13627,
+        14360,
+        14759,
+        16352
+      ],
+      "selected": {
+        "within_question_auroc": {
+          "mean": 0.78,
+          "ci95": [
+            0.754,
+            0.8053333333333333
+          ],
+          "n_questions": 500
+        },
+        "selection_accuracy": {
+          "mean": 0.57,
+          "ci95": [
+            0.526,
+            0.614
+          ],
+          "n_questions": 500
+        }
+      },
+      "active_random_control": {
+        "within_question_auroc": {
+          "mean": 0.6393333333333334,
+          "ci95": [
+            0.6066666666666667,
+            0.672
+          ],
+          "n_questions": 500
+        },
+        "selection_accuracy": {
+          "mean": 0.406,
+          "ci95": [
+            0.362,
+            0.45
+          ],
+          "n_questions": 500
+        }
+      },
+      "paired_selected_minus_random": {
+        "within_question_auroc": {
+          "mean": 0.14066666666666666,
+          "ci95": [
+            0.10666666666666669,
+            0.174
+          ],
+          "n_questions": 500
+        },
+        "selection_accuracy": {
+          "mean": 0.164,
+          "ci95": [
+            0.112,
+            0.216
+          ],
+          "n_questions": 500
+        }
+      }
+    }
+  },
+  "limitations": [
+    "This does not establish a causal circuit or a cross-model invariant subspace.",
+    "This is a post-hoc V47 diagnostic audit, not a second prospective confirmation.",
+    "Candidate correctness is operationalized by the supplied machine-verifiable option labels."
+  ]
+}

@@ -1,0 +1,290 @@
+{
+  "experiment": "V54 unified candidate-conditioned interface comparison",
+  "protocol": "paper/V54_UNIFIED_INTERFACE_COMPARISON_PROTOCOL.md",
+  "status": "post-hoc interface audit on the previously examined V47/V48 target; all target-side scores are evaluated once without target refitting",
+  "target": {
+    "questions": 500,
+    "candidate_states": 2000,
+    "candidates_per_question": 4
+  },
+  "source": {
+    "questions": 160,
+    "candidate_states": 640
+  },
+  "shared_compute": {
+    "backbone": "Gemma-2-2B layer 18",
+    "candidate_conditioned_forwards": 2000,
+    "additional_stochastic_samples": 0,
+    "mean_gemma_input_tokens_per_candidate": 347.626,
+    "note": "Dense, SAE, PCA, NLL, entropy, and norm use the same candidate-conditioned Gemma forward pass."
+  },
+  "internal_interfaces": {
+    "dense_residual": {
+      "interface": "source-fit logistic readout of question-centred layer-18 residual",
+      "same_gemma_forward": true,
+      "within_question_auroc": {
+        "mean": 0.9386666666666666,
+        "ci95": [
+          0.9233333333333332,
+          0.9526666666666668
+        ],
+        "n_questions": 500
+      },
+      "selection_accuracy": {
+        "mean": 0.858,
+        "ci95": [
+          0.826,
+          0.888
+        ],
+        "n_questions": 500
+      },
+      "population_auroc": 0.9622146666666667,
+      "population_auprc": 0.9861064913347424
+    },
+    "sae_top32": {
+      "interface": "source-only Top-32 GemmaScope SAE support from V53",
+      "same_gemma_forward": true,
+      "within_question_auroc": {
+        "mean": 0.78,
+        "ci95": [
+          0.754,
+          0.806
+        ],
+        "n_questions": 500
+      },
+      "selection_accuracy": {
+        "mean": 0.57,
+        "ci95": [
+          0.526,
+          0.614
+        ],
+        "n_questions": 500
+      },
+      "population_auroc": 0.8203173333333332,
+      "population_auprc": 0.9261318367323242
+    },
+    "pca_readout": {
+      "interface": "source-selected PCA plus logistic readout",
+      "same_gemma_forward": true,
+      "candidate_ranks": [
+        8,
+        16,
+        32,
+        64
+      ],
+      "source_grouped_cv_population_auroc": {
+        "8": 0.6184895833333334,
+        "16": 0.6708333333333334,
+        "32": 0.7776562500000002,
+        "64": 0.8422916666666667
+      },
+      "selected_rank": 64,
+      "within_question_auroc": {
+        "mean": 0.92,
+        "ci95": [
+          0.902,
+          0.9366666666666668
+        ],
+        "n_questions": 500
+      },
+      "selection_accuracy": {
+        "mean": 0.834,
+        "ci95": [
+          0.8,
+          0.866
+        ],
+        "n_questions": 500
+      },
+      "population_auroc": 0.9505466666666667,
+      "population_auprc": 0.9822586015072995
+    },
+    "candidate_nll": {
+      "interface": "negative final-candidate-token log probability",
+      "same_gemma_forward": true,
+      "within_question_auroc": {
+        "mean": 0.8696666666666667,
+        "ci95": [
+          0.8473333333333333,
+          0.891
+        ],
+        "n_questions": 500
+      },
+      "selection_accuracy": {
+        "mean": 0.748,
+        "ci95": [
+          0.71,
+          0.786
+        ],
+        "n_questions": 500
+      },
+      "population_auroc": 0.8909193333333334,
+      "population_auprc": 0.9525573764756072
+    },
+    "next_token_entropy": {
+      "interface": "entropy of the next-token distribution after the complete candidate",
+      "same_gemma_forward": true,
+      "not_semantic_entropy": true,
+      "within_question_auroc": {
+        "mean": 0.6553333333333332,
+        "ci95": [
+          0.6253333333333333,
+          0.684
+        ],
+        "n_questions": 500
+      },
+      "selection_accuracy": {
+        "mean": 0.396,
+        "ci95": [
+          0.354,
+          0.438
+        ],
+        "n_questions": 500
+      },
+      "population_auroc": 0.6145873333333334,
+      "population_auprc": 0.8276245436538372
+    },
+    "residual_norm": {
+      "interface": "source-fit scalar readout of question-centred residual norm",
+      "same_gemma_forward": true,
+      "within_question_auroc": {
+        "mean": 0.42533333333333334,
+        "ci95": [
+          0.3933333333333333,
+          0.4566666666666666
+        ],
+        "n_questions": 500
+      },
+      "selection_accuracy": {
+        "mean": 0.184,
+        "ci95": [
+          0.15,
+          0.22
+        ],
+        "n_questions": 500
+      },
+      "population_auroc": 0.444552,
+      "population_auprc": 0.7063070589113503
+    }
+  },
+  "paired_dense_minus_internal": {
+    "dense_minus_sae_top32": {
+      "within_question_auroc": {
+        "mean": 0.15866666666666668,
+        "ci95": [
+          0.13266666666666668,
+          0.18466666666666667
+        ],
+        "n_questions": 500
+      },
+      "selection_accuracy": {
+        "mean": 0.288,
+        "ci95": [
+          0.242,
+          0.334
+        ],
+        "n_questions": 500
+      }
+    },
+    "dense_minus_pca_readout": {
+      "within_question_auroc": {
+        "mean": 0.018666666666666668,
+        "ci95": [
+          0.0013333333333333326,
+          0.036
+        ],
+        "n_questions": 500
+      },
+      "selection_accuracy": {
+        "mean": 0.024,
+        "ci95": [
+          -0.008,
+          0.058
+        ],
+        "n_questions": 500
+      }
+    },
+    "dense_minus_candidate_nll": {
+      "within_question_auroc": {
+        "mean": 0.06900000000000002,
+        "ci95": [
+          0.047333333333333345,
+          0.09066666666666667
+        ],
+        "n_questions": 500
+      },
+      "selection_accuracy": {
+        "mean": 0.11,
+        "ci95": [
+          0.066,
+          0.154
+        ],
+        "n_questions": 500
+      }
+    },
+    "dense_minus_next_token_entropy": {
+      "within_question_auroc": {
+        "mean": 0.2833333333333334,
+        "ci95": [
+          0.2506666666666667,
+          0.31533333333333335
+        ],
+        "n_questions": 500
+      },
+      "selection_accuracy": {
+        "mean": 0.462,
+        "ci95": [
+          0.41,
+          0.514
+        ],
+        "n_questions": 500
+      }
+    },
+    "dense_minus_residual_norm": {
+      "within_question_auroc": {
+        "mean": 0.5133333333333333,
+        "ci95": [
+          0.48,
+          0.5473333333333333
+        ],
+        "n_questions": 500
+      },
+      "selection_accuracy": {
+        "mean": 0.674,
+        "ci95": [
+          0.62995,
+          0.716
+        ],
+        "n_questions": 500
+      }
+    }
+  },
+  "external_reference_not_same_backbone": {
+    "name": "zero-shot Qwen2.5-7B supported-versus-unsupported verifier",
+    "metrics": {
+      "within_question_auroc": {
+        "mean": 0.996,
+        "ci95": [
+          0.992,
+          0.9993333333333334
+        ],
+        "n_questions": 500
+      },
+      "selection_accuracy": {
+        "mean": 0.99,
+        "ci95": [
+          0.98,
+          0.998
+        ],
+        "n_questions": 500
+      },
+      "population_auroc": 0.9939313333333333,
+      "population_auprc": 0.9892290759653344
+    },
+    "reason_separate": "different model, prompt, and resource regime; included as a task-aligned external-verification reference only"
+  },
+  "not_evaluated_under_this_contract": {
+    "semantic_entropy": "requires independently sampled completions; fixed answer options are not samples",
+    "SelfCheckGPT": "requires multiple stochastic textual generations; fixed answer options are not samples"
+  },
+  "claim_boundary": "This compares interfaces for realised candidate ranking in one evidence-grounded finite-option condition. It does not establish universal detector ranking, pre-generation branch prediction, or causal localisation."
+}

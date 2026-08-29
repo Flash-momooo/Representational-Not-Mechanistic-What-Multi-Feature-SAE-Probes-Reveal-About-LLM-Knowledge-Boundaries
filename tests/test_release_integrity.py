@@ -36,6 +36,27 @@ def main() -> None:
     )
     assert stage_result["experiment"] == "NN36 stage-wise budget-constrained intervention"
 
+    v48 = json.loads(
+        (ROOT / "results" / "poc_v48_hotpot_scale_candidate_readout.json").read_text(encoding="utf-8")
+    )
+    assert v48["n_questions"] == 500
+    assert v48["results"]["dense"]["within_question_auroc"]["mean"] == 0.9386666666666666
+
+    v53 = json.loads(
+        (ROOT / "results" / "poc_v53_candidate_conditioned_subspace_audit.json").read_text(encoding="utf-8")
+    )
+    assert v53["target"]["questions"] == 500
+    assert v53["results"]["K32"]["selected_support"]["decoder_span_overlap"]["mean"] > 0.5
+
+    v54 = json.loads(
+        (ROOT / "results" / "poc_v54_unified_interface_comparison.json").read_text(encoding="utf-8")
+    )
+    assert v54["target"]["questions"] == 500
+    assert v54["internal_interfaces"]["dense_residual"]["within_question_auroc"]["mean"] == 0.9386666666666666
+
+    v56_text = (ROOT / "results" / "poc_v56_strong_semantic_baselines.json").read_text(encoding="utf-8")
+    assert "C:\\Users" not in v56_text
+
     with (ROOT / "data" / "ARTIFACT_MANIFEST.csv").open(encoding="utf-8", newline="") as handle:
         rows = list(csv.DictReader(handle))
     assert rows

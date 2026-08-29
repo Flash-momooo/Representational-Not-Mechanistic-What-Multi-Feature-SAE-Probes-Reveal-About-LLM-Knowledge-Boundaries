@@ -1,0 +1,18 @@
+{
+  "experiment": "V53 GemmaScope source-cache equivalence audit",
+  "source_cache": "outputs\\cache\\equal_compute_source.npz",
+  "rows": 640,
+  "sae": "GemmaScope layer-18 width-16k",
+  "flat_activation_correlation": 0.9998358751598159,
+  "per_row_cosine": {
+    "mean": 0.9998376965522766,
+    "min": 0.9978277087211609,
+    "max": 0.9999998807907104
+  },
+  "top32_active_feature_overlap": {
+    "mean": 0.9978515625,
+    "min": 0.96875,
+    "max": 1.0
+  },
+  "interpretation": "This is an implementation-equivalence audit only; it does not test support stability or prediction."
+}
